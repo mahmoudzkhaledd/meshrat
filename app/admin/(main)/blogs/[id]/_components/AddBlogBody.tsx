@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 
 import moment from "moment";
 import { revalidatePath } from "next/cache";
+import Link from "next/link";
 
 export default function AddBlogBody() {
   const [pending, startTrans] = useTransition();
@@ -88,11 +89,11 @@ export default function AddBlogBody() {
       <div className="mb-5 flex items-center justify-between">
         <div className="flex flex-wrap items-center gap-2">
           <h2 className="text-xl font-bold">Edit Blog Article</h2>
-          <a target="__blank" href={`/blogs/${blog.slug}`}>
+          <Link target="__blank" href={`/blogs/${blog.slug}`}>
             <Button className="rounded-full" size={"icon"} variant={"outline"}>
               <ArrowRight className="w-4" />
             </Button>
-          </a>
+          </Link>
         </div>
         <div className="flex items-center gap-2">
           <Button
@@ -148,7 +149,7 @@ export default function AddBlogBody() {
                 </Button>
               </div>
             )}
-            {imageUrl == null && (
+            {(imageUrl == null && !pending) && (
               <input
                 type="file"
                 id="uploadBanner"

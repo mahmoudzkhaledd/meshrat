@@ -139,7 +139,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
               {service?.name ?? "Add new service"}
             </h2>
             {service != null && (
-              <a target="__blank" href={`/services/${service?.id}`}>
+              <Link  target="__blank" href={`/services/${service?.id}`}>
                 <Button
                   className="rounded-full"
                   size={"icon"}
@@ -148,7 +148,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
                 >
                   <ArrowRight className="w-4" />
                 </Button>
-              </a>
+              </Link>
             )}
           </div>
           <div className="flex items-center gap-2">
@@ -311,7 +311,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
                       </Button>
                     </div>
                   )}
-                  {imageUrl == null && (
+                  {(imageUrl == null && !loading) && (
                     <input
                       type="file"
                       id="uploadBanner"
