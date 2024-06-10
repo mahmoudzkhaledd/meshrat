@@ -8,7 +8,7 @@ export default function GeneralDetails({ data }: { data: BodyContent }) {
     >
       <div className="flex w-full justify-center lg:w-1/2">
         <div>
-          <Image
+          <img
             alt="Details"
             width={521}
             height={548}
