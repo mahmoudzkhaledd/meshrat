@@ -9,15 +9,15 @@ export async function POST(request: NextRequest) {
         }, { status: 400 });
     }
     try {
-        const pass = '12345678';
+        const pass = 'usama@123';
         const hashedPass = await bcrypt.hash(pass, 10);
 
         const admin = await prisma.admin.create({
             data: {
-                name: "Mahmoud Khaled",
-                email: "mahmoudnaggar2002@gmail.com",
-                username: "mk2002",
-                phone: "01145243378",
+                name: "Usama El-Naggar",
+                email: "info@meshrat.com",
+                username: "usama222",
+                phone: "01064188541",
                 password: hashedPass,
                 jobTitle: "Website Ownner",
             }
