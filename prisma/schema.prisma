@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id         String    @id @default(cuid())
+  name       String
+  username   String    @unique
+  email      String
+  password   String
+  phone      String
+  jobTitle   String
+  suspended  Boolean   @default(false)
+  lastActive DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  Service    Service[]
+
+  Blog Blog[]
+}
+
+model Service {
+  id             String   @id @default(cuid())
+  adminId        String
+  doneOrders     Int      @default(0)
+  pendingOrders  Int      @default(0)
+  name           String
+  rating         Float    @default(0)
+  category       String
+  price          Float
+  thumbnailImage String?
+  description    String?  @default("")
+  subDescription String?  @default("")
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  visits         Int      @default(0)
+  admin          Admin    @relation(fields: [adminId], references: [id])
+}
+
+model Blog {
+  id          String   @id @default(cuid())
+  admin       Admin    @relation(fields: [adminId], references: [id])
+  title       String
+  slug        String   @unique
+  bannerImage String?
+  content     String
+  visits      Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  adminId     String
+  published   Boolean  @default(false)
+
+  @@index([slug])
+}
