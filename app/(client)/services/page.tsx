@@ -14,6 +14,9 @@ export default async function ServicesPage({}) {
     where: {
       active: true,
     },
+    orderBy: {
+      createdAt: "desc",
+    },
   });
 
   return (

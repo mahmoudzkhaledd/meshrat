@@ -1,5 +1,6 @@
 "use server";
 import { authXAdmin } from "@/authXAdmin";
+import { customSanatize } from "@/lib/customSantize";
 import { prisma } from "@/lib/db";
 import { extractAxiosError, slugify } from "@/lib/utils";
 import { addBlogSchema, editBlogSchema } from "@/types/BlogSchema";
@@ -17,7 +18,7 @@ export const editBlog = async (
     redirect("/");
     return {};
   }
-
+  data = customSanatize(data);
   try {
     const tmpBlog = await prisma.blog.findUnique({
       where: {

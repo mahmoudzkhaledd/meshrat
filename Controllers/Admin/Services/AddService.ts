@@ -1,9 +1,9 @@
 "use server";
 import { authXAdmin } from "@/authXAdmin";
+import { customSanatize } from "@/lib/customSantize";
 import { prisma } from "@/lib/db";
 import { extractAxiosError } from "@/lib/utils";
 import addServiceSchema from "@/types/AddServiceSchema";
-import { Metadata } from "next";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -15,6 +15,7 @@ export const addNewService = async (
     redirect("/");
     return;
   }
+  service = customSanatize(service);
   try {
     const schema = addServiceSchema.parse(service);
     const res = await prisma.service.create({
@@ -47,6 +48,7 @@ export const editService = async (
     redirect("/");
     return;
   }
+  service = customSanatize(service);
   try {
     const schema = addServiceSchema.parse(service);
 

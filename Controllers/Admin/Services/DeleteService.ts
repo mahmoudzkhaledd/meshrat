@@ -14,6 +14,7 @@ export const deleteService = async (
     redirect("/");
     return {};
   }
+  
   try {
     const service = await prisma.service.findUnique({
       where: {
