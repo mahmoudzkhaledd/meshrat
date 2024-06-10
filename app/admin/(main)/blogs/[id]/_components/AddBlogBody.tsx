@@ -14,8 +14,9 @@ import { deleteBlogImage } from "@/Controllers/Admin/Blogs/DeleteImage";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+
 import moment from "moment";
+import { revalidatePath } from "next/cache";
 
 export default function AddBlogBody() {
   const [pending, startTrans] = useTransition();
@@ -51,12 +52,13 @@ export default function AddBlogBody() {
       if (res?.error) {
         toast.error(res.error);
       }
-      if (res?.success == true) {
+      if (res?.success != null) {
         toast.success(
           publish != null
             ? `Blog ${publish ? "published" : "not published"} successfully`
             : "Changes saved successfully",
         );
+ 
       }
     });
   };
@@ -86,11 +88,11 @@ export default function AddBlogBody() {
       <div className="mb-5 flex items-center justify-between">
         <div className="flex flex-wrap items-center gap-2">
           <h2 className="text-xl font-bold">Edit Blog Article</h2>
-          <Link target="__blank" href={`/blogs/${blog.slug}`}>
+          <a target="__blank" href={`/blogs/${blog.slug}`}>
             <Button className="rounded-full" size={"icon"} variant={"outline"}>
               <ArrowRight className="w-4" />
             </Button>
-          </Link>
+          </a>
         </div>
         <div className="flex items-center gap-2">
           <Button

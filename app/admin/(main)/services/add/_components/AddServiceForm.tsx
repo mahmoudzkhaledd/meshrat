@@ -139,7 +139,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
               {service?.name ?? "Add new service"}
             </h2>
             {service != null && (
-              <Link target="__blank" href={`/services/${service?.id}`}>
+              <a target="__blank" href={`/services/${service?.id}`}>
                 <Button
                   className="rounded-full"
                   size={"icon"}
@@ -148,7 +148,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
                 >
                   <ArrowRight className="w-4" />
                 </Button>
-              </Link>
+              </a>
             )}
           </div>
           <div className="flex items-center gap-2">
