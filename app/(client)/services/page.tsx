@@ -5,11 +5,13 @@ import { configs } from "@/constants/CoreTexts";
 import { prisma } from "@/lib/db";
 import { Info } from "lucide-react";
 import { Metadata } from "next";
+import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
   title: "Services",
 };
 export default async function ServicesPage({}) {
+  cookies();
   const services = await prisma.service.findMany({
     where: {
       active: true,
@@ -18,7 +20,7 @@ export default async function ServicesPage({}) {
       createdAt: "desc",
     },
   });
-
+  
   return (
     <section>
       <CustomHeader data={configs.servicesPage} />

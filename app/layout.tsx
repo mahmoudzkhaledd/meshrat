@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
-  description: "Unlock the power of website analytics with our comprehensive platform. Gain insights into visitor behavior, track performance metrics, and optimize your website for success. Sign up for a free trial today!",
+  description: "At Meshrat Wellness, we are dedicated to enhancing your health and well-being through expert-driven holistic treatments. Founded by Dr. Osama Elngar, a renowned physiotherapist with extensive experience in muscle treatment and recovery, our clinic stands as a beacon of healing and relaxation.",
 };
 
 export default async function RootLayout({

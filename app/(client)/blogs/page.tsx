@@ -4,6 +4,7 @@ import BlogComponent from "./_components/BlogComponent";
 import { toInt } from "@/lib/utils";
 import CustomPagination from "@/components/GeneralComponents/CustomPagination";
 import { Metadata } from "next";
+import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
   title: "Blogs",
@@ -15,7 +16,7 @@ export default async function BlogsPage({
   searchParams: { page: string };
 }) {
   const page = toInt(searchParams.page) ?? 0;
-
+  cookies();
   const blogs = await prisma.blog.findMany({
     where: {
       published: true,
