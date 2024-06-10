@@ -4,6 +4,7 @@ import {
   addNewService,
   editService,
 } from "@/Controllers/Admin/Services/AddService";
+import { deleteService } from "@/Controllers/Admin/Services/DeleteService";
 import { deleteServiceImage } from "@/Controllers/Admin/Services/DeleteServiceImage";
 import { uploadServiceImage } from "@/Controllers/Admin/Services/UploadServiceImage";
 import TextEditor from "@/components/GeneralComponents/TextEditor";
@@ -118,6 +119,17 @@ export default function AddServiceForm({ service }: { service?: Service }) {
       setUrl(undefined);
     });
   };
+  const handelDeleteService = () => {
+    if (service == null) return;
+    if (!window.confirm("Are you sure to delet this service?")) return;
+    startTrans(async () => {
+      const res = await deleteService(service.id);
+      if (res?.error) {
+        toast.error(res.error);
+        return;
+      }
+    });
+  };
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit((data) => handelSubmit(data))}>
@@ -144,17 +156,29 @@ export default function AddServiceForm({ service }: { service?: Service }) {
               {service == null ? "Add Service" : "Save Changes"}
             </Button>
             {service != null && (
-              <Button
-                className="rounded-full"
-                variant={"outline"}
-                type="button"
-                disabled={loading}
-                onClick={form.handleSubmit((data) =>
-                  handelSubmit(data, !service.active),
-                )}
-              >
-                {service.active ? "UnPublish" : "Publish"}
-              </Button>
+              <>
+                <Button
+                  className="rounded-full"
+                  variant={"outline"}
+                  type="button"
+                  disabled={loading}
+                  onClick={form.handleSubmit((data) =>
+                    handelSubmit(data, !service.active),
+                  )}
+                >
+                  {service.active ? "UnPublish" : "Publish"}
+                </Button>
+                <Button
+                  className="rounded-full"
+                  variant={"outline"}
+                  type="button"
+                  size={"icon"}
+                  disabled={loading}
+                  onClick={handelDeleteService}
+                >
+                  <Trash className="w-4" />
+                </Button>
+              </>
             )}
           </div>
         </div>
