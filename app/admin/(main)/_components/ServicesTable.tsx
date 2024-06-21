@@ -58,7 +58,7 @@ export default function ServicesTable({ services }: { services: Service[] }) {
                 <TableCell>{e.price} EGP</TableCell>
                 <TableCell>
                   <Badge className="text-xs" variant="outline">
-                    {e.active ? "Active" : "In active"}
+                    {e.active ? "Active" : "Not active"}
                   </Badge>
                 </TableCell>
                 <TableCell>

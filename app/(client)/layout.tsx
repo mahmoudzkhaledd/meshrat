@@ -8,10 +8,10 @@ export default function MarketingLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="min-h-full flex flex-col px-[30px] lg:px-[200px]">
+    <section className="flex min-h-full flex-col px-[30px] pb-10 lg:px-[200px]">
       <div className="h-full">
-        <Navbar className="mb-7" />
-        {children}
+        <Navbar />
+        <div className=" mt-[90px]">{children}</div>
       </div>
       <Footer className="mt-auto" />
     </section>

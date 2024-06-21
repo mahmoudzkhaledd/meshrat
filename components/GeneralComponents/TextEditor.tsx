@@ -80,6 +80,7 @@ function EditorMenu() {
       {textEditorListMenu.map((e, idx) => (
         <Button
           size={"icon"}
+          type="button"
           onClick={() => handelClick(e)}
           className={cn({
             "aspect-square border bg-white text-black hover:bg-gray-100":

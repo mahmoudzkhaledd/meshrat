@@ -13,7 +13,7 @@ export default function Logo({ to, newPage, className, isLink }: { isLink?: bool
             className={cn("font-bold text-xl", className)}
             target={newPage ? "_blank" : "_self"}
         >
-            <Image className=" aspect-square w-[40px]" alt="" src={'/images/logo.png'} width={50} height={50} />
+            <Image className="aspect-square w-[50px]" alt="" src={'/images/logo.png'} width={50} height={50} />
         </Link>
     )
 }
