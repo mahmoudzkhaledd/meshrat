@@ -9,7 +9,7 @@ export default function ServicesSection({ services }: { services: Service[] }) {
   return (
     <section className="pt-24 md:pt-32" id="services">
       <h2 className="mb-10 text-center text-4xl font-bold">Services</h2>
-      <div className="grid lg:grid-cols-3 gap-4">
+      <div className="flex flex-col items-center lg:grid lg:grid-cols-3 gap-4">
         {services?.map((e, idx) => <ServiceCard service={e} key={idx} />)}
       </div>
     </section>

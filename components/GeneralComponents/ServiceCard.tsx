@@ -6,8 +6,7 @@ import { Service } from "@prisma/client";
 export default function ServiceCard({ service }: { service: Service }) {
   return (
     <div
-      style={{ maxWidth: "350px" }}
-      className="rounded-lg border border-gray-200 bg-white shadow"
+      className="rounded-lg max-w-full md:max-w-[350px] border border-gray-200 bg-white shadow"
     >
       <img
         style={{
