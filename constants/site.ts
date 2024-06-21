@@ -1,7 +1,7 @@
 import { Facebook, Instagram, Phone } from "lucide-react";
 
 export const siteConfig = {
-  name: "Mishrat",
+  name: "Meshrat",
   socialMedia: [
     {
       icon: Instagram,
