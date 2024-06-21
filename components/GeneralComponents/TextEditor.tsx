@@ -99,6 +99,7 @@ function EditorMenu() {
       ))}
       <Button
         size={"icon"}
+        type="button"
         onClick={() => {
           if (editor.editor?.isActive("link")) {
             editor.editor?.chain().focus().unsetLink().run();
