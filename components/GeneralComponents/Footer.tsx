@@ -26,7 +26,7 @@ export default function Footer({ className }: { className?: string }) {
           </div>
           <ul>
             <li>Home</li>
-            <li>Doctors</li>
+    
             <li>Services</li>
             <li>Reviews</li>
           </ul>

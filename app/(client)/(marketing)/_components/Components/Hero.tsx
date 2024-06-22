@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-
+import { useTranslations } from "next-intl";
 export default function HeroSection() {
   return (
     <section className="pt-24 md:pt-32" id="home">
@@ -13,14 +13,18 @@ export default function HeroSection() {
             Securely share your comprehensive medical history with doctors and
             loved ones, for better communication and care.
           </p>
-          <Link href={'/contact'}>
+          <Link href={"/contact"}>
             <button className="rounded-3xl bg-blue-400 bg-primary px-8 py-2 text-white shadow-lg transition hover:bg-[#158ace]">
               Contact us
             </button>
           </Link>
         </div>
         <div className="max-w-xs md:max-w-none">
-          <img className="max-w-[250px] animate-bounce" src="/images/logo.png" alt="hero" />
+          <img
+            className="max-w-[250px] animate-bounce"
+            src="/images/logo.png"
+            alt="hero"
+          />
         </div>
       </div>
       <div className="xs:px-16 mt-10 flex flex-wrap items-center justify-center gap-5 px-10 text-center sm:px-5 md:flex-nowrap md:justify-around md:px-0">

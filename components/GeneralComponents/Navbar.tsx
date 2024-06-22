@@ -21,12 +21,7 @@ export default function Navbar({ className }: { className?: string }) {
             >
               Home
             </a>
-            <a
-              className="text-lg font-bold text-[#1d4d85] transition duration-500 hover:text-[#2b7dad]"
-              href="#doctors"
-            >
-              Doctors
-            </a>
+           
             <a
               className="text-lg font-bold text-[#1d4d85] transition duration-500 hover:text-[#2b7dad]"
               href="#services"
