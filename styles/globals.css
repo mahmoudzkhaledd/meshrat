@@ -9,6 +9,15 @@ body,
   scroll-behavior: smooth;
 }
 
+/* @font-face {
+  font-family: 'Almarai';
+  src: url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap') format('woff2');
+} */
+
+p [lang='ar'] {
+  font-family: 'Almarai';
+  src: url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap') format('woff2');
+}
 
 
 .glow {

@@ -8,6 +8,7 @@ export const validateToken = async (token: string): Promise<TokenPayload | null>
     
     try {
         const decoded = await jwtVerify(token, new TextEncoder().encode(process.env.AUTHX_SECRET as string));
+    
         const data: any = decoded.payload;
         
         const model = tokenSchema.safeParse({

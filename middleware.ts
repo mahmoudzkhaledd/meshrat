@@ -24,7 +24,7 @@ const handelApiRoutes = (req: NextRequest) => {
 };
 const handelAdminRoutes = async (req: NextRequest) => {
   const user = await authXAdmin();
-
+  console.log('user: ',user)
   const isLoggedin = user?.user != null;
   const route = req.nextUrl;
   const isAuthRoute = isUrlMatching(route.pathname, adminAuthRoutes);
@@ -49,6 +49,7 @@ const intlMiddleware = createMiddleware({
   defaultLocale: "en",
 });
 const middleware = async (req: NextRequest) => {
+  console.log("req.nextUrl.pathname")
   if (req.nextUrl.pathname.startsWith("/api")) return handelApiRoutes(req);
   if (req.nextUrl.pathname.startsWith("/admin")) return handelAdminRoutes(req);
 
@@ -80,10 +81,9 @@ const middleware = async (req: NextRequest) => {
 export default middleware;
 export const config = {
   matcher: [
-    // "/((?!.+\\.[\\w]+$|_next).*)",
-    // "/",
-    // "/(api|trpc)(.*)",
+    "/((?!.+\\.[\\w]+$|_next).*)",
     "/",
-    "/(ar|en)/:path*", 
+    "/(api|trpc)(.*)",
+    
   ],
 };

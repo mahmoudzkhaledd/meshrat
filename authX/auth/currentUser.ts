@@ -6,7 +6,7 @@ import { validateToken } from "../token";
 
 export const authXAuth = async (tokenName?: string): Promise<TokenPayload | null> => {
     const token = cookies().get(tokenName ?? authConstants.tokenName);
-  
+    
     if (!token?.value) {
         return null;
     }

@@ -55,8 +55,8 @@ export default function RootLayout({
   const locale = lang == "ar" ? "ar" : "en";
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body className={lang == "en" ? inter.className : almarai.className}>
+    <html lang={'en'} suppressHydrationWarning>
+      <body className={inter.className}>
         <AuthXProvider session={null}>
           <TooltipProvider delayDuration={30}>
             <Toaster />

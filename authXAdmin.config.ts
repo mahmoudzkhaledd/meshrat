@@ -2,7 +2,7 @@ import AuthXConfigs from "@/authX/types/AuthXConfigs";
 import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/db';
 import { CredentialsError } from "./authX/types/CredentialsError";
-import { DEFAULT_REDIRECT } from "./routes";
+ 
 import { adminLoginSchema } from "./types/adminLoginSchema";
 
 export const authConfig: AuthXConfigs = {
