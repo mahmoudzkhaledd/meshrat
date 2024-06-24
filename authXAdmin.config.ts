@@ -7,7 +7,7 @@ import { adminLoginSchema } from "./types/adminLoginSchema";
 
 export const authConfig: AuthXConfigs = {
     redirectAfterAuth: '/admin',
-    tokenExpiration: "5d",
+    tokenExpiration: "5 days",
     tokenName: "adminAuth",
 
     authorize: async (credentials: object) => {
