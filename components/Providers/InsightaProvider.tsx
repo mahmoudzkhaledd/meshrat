@@ -1,20 +1,37 @@
-'use client';
-
+"use client";
+import React, { useRef } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { isUrlMatching } from "@/lib/utils";
 
-export default function InsightaProvider() {
+export default function InsightaProvider({ exclude = [] }: { exclude: string[] }) {
+  const pathname = usePathname();
+
+  const initialized = useRef<string>("");
+  const fetchWeb = async () => {
+    try {
+      const res = await fetch("https://insighta-server.onrender.com/visit", {
+        credentials: "include",
+        method: "POST",
+        body: JSON.stringify({
+          url: window.location.href,
+        }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+    } catch (ex) {}
+  };
   useEffect(() => {
-    const handleRouteChange = () => {
-      
-    };
+    if (
+      initialized.current != pathname &&
+      !isUrlMatching(pathname ?? "asd", exclude)
+    ) {
+      initialized.current = pathname ?? "";
+      fetchWeb();
+    }
+  }, [pathname]);
 
-   
-    window.addEventListener('popstate', handleRouteChange);
-    return () => {
-      window.removeEventListener('popstate', handleRouteChange);
-    };
-  }, []);
-  return (
-    <></>
-  )
+  return <></>;
 }

@@ -11,6 +11,7 @@ import { franc } from "franc";
 import { Button } from "@/components/ui/button";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
+import WhatsAppContact from "@/components/GeneralComponents/WhatsAppContact";
 
 const checkAuth = cache(async () => {
   const session = await authXAdmin();
@@ -78,7 +79,7 @@ export default async function ServicePage({
     <div>
       {!service.active && (
         <div className="mb-4 flex w-full gap-2 rounded-md bg-red-500 px-5 py-3 text-white">
-          <Info className="w-4 min-w-4" /> {t('notFound')}
+          <Info className="w-4 min-w-4" /> {t("notFound")}
         </div>
       )}
       <section className="w-full pt-10">
@@ -101,27 +102,34 @@ export default async function ServicePage({
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
+              {service.price != 0 && (
+                <div className="space-y-1">
+                  <h3 className="text-lg font-bold">{t("price")}</h3>
+                  <p className="text-gray-500 dark:text-gray-400">
+                    {service.price} {t("currency")}
+                  </p>
+                </div>
+              )}
               <div className="space-y-1">
-                <h3 className="text-lg font-bold">{t('price')}</h3>
-                <p className="text-gray-500 dark:text-gray-400">
-                  {service.price} {t('currency')}
-                </p>
-              </div>
-              <div className="space-y-1">
-                <h3 className="text-lg font-bold">{t('category')}</h3>
+                <h3 className="text-lg font-bold">{t("category")}</h3>
                 <p className="text-gray-500 dark:text-gray-400">
                   {service.category}
                 </p>
               </div>
             </div>
-            <Link className="w-fit" href={"/contact"}>
-              <Button>{t("contactUs")}</Button>
-            </Link>
+            <div className="flex gap-4 items-center">
+              <Link  className="w-fit" href={"/contact"}>
+                <Button size={'sm'}>{t("contactUs")}</Button>
+              </Link>
+              <WhatsAppContact />
+            </div>
           </div>
         </div>
       </section>
       <div className="mt-10 pb-20">
-        <h2 className="mb-3 text-xl font-semibold lg:text-3xl">{t('description')}</h2>
+        <h2 className="mb-3 text-xl font-semibold lg:text-3xl">
+          {t("description")}
+        </h2>
         <div className="prose max-w-full">
           <div
             dangerouslySetInnerHTML={{ __html: service.description as string }}

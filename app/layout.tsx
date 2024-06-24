@@ -5,7 +5,6 @@ import AuthXProvider from "@/authX/Provider/AuthXProvider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "react-hot-toast";
 import { NextIntlClientProvider } from "next-intl";
-import InsightaProvider from "@/components/Providers/InsightaProvider";
 import { siteConfig } from "@/constants/site";
 
 import { cookies } from "next/headers";
@@ -61,7 +60,7 @@ export default async function RootLayout({
             <TooltipProvider delayDuration={30}>
               <Toaster />
               {children}
-              <InsightaProvider />
+              
             </TooltipProvider>
           </AuthXProvider>
         </NextIntlClientProvider>
