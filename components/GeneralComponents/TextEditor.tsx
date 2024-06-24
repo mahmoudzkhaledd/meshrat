@@ -121,12 +121,16 @@ function EditorMenu() {
 export default function TextEditor({
   onDataUpdate,
   content,
+  className,
 }: {
   onDataUpdate: (data: string) => void;
   content: string;
+  className?: string;
 }) {
   return (
-    <div className="mb-11 mt-5 w-full rounded-lg border px-4 py-4">
+    <div
+      className={cn("mb-11 mt-5 w-full rounded-lg border px-4 py-4", className)}
+    >
       <EditorProvider
         slotBefore={
           <>

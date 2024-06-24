@@ -139,7 +139,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
               {service?.name ?? "Add new service"}
             </h2>
             {service != null && (
-              <Link  target="__blank" href={`/services/${service?.id}`}>
+              <Link target="__blank" href={`/services/${service?.id}`}>
                 <Button
                   className="rounded-full"
                   size={"icon"}
@@ -187,7 +187,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
             "grid grid-cols-1 gap-4 lg:grid-cols-2": service != null,
           })}
         >
-          <div className="space-y-5">
+          <div className="flex flex-col space-y-5">
             <FormField
               control={form.control}
               name="name"
@@ -261,29 +261,10 @@ export default function AddServiceForm({ service }: { service?: Service }) {
                 </FormItem>
               )}
             />
-
-            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem className="grid gap-2">
-                  <FormLabel> Description </FormLabel>
-                  <FormControl>
-                    <TextEditor
-                      onDataUpdate={(data) => {
-                        field.onChange(data);
-                      }}
-                      content={field.value ?? ""}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
           </div>
           {service != null && (
-            <div className="space-y-5">
-              <div className="lg:text-2lx mx-auto aspect-video w-full max-w-[700px] overflow-hidden rounded-lg border bg-gray-50 lg:mx-0">
+            <div className="col-span-1 space-y-5">
+              <div className="lg:text-2lx mx-auto aspect-video  w-full max-w-[700px] overflow-hidden rounded-lg border bg-gray-50 lg:mx-0">
                 <label
                   className={cn(
                     "relative flex h-full w-full items-center justify-center",
@@ -299,7 +280,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
                     </p>
                   ) : (
                     <div className="">
-                      <img src={imageUrl} className="z-0 w-full object-cover" />
+                      <img src={imageUrl} className="z-0 w-full  object-contain" />
                       <Button
                         onClick={handelDeleteImage}
                         size={"icon"}
@@ -311,7 +292,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
                       </Button>
                     </div>
                   )}
-                  {(imageUrl == null && !loading) && (
+                  {imageUrl == null && !loading && (
                     <input
                       type="file"
                       id="uploadBanner"
@@ -323,35 +304,54 @@ export default function AddServiceForm({ service }: { service?: Service }) {
                   )}
                 </label>
               </div>
-              <Card className="w-full">
-                <CardHeader>
-                  <CardTitle className="flex flex-wrap gap-2">
-                    Visit Statistics
-                    <Badge>
-                      {service?.active ? "Published" : "Not Published"}
-                    </Badge>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="grid gap-3">
-                  <div className="grid">
-                    <div className="text-4xl font-bold">{service?.visits}</div>
-                    <div className="text-gray-500 dark:text-gray-400">
-                      Total Visits
-                    </div>
-                  </div>
-                  <div className="text-gray-500 dark:text-gray-400">
-                    Created {moment(service.createdAt).fromNow()}
-                  </div>
-                  <div className="text-gray-500 dark:text-gray-400">
-                    {service?.active
-                      ? "This content is currently published and visible to the public."
-                      : "This content is currently not published and not visible to the public."}
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           )}
         </div>
+        {service != null && (
+          <Card className="w-full mt-5">
+            <CardHeader>
+              <CardTitle className="flex flex-wrap gap-2">
+                Visit Statistics
+                <Badge>{service?.active ? "Published" : "Not Published"}</Badge>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="grid gap-3">
+              <div className="grid">
+                <div className="text-4xl font-bold">{service?.visits}</div>
+                <div className="text-gray-500 dark:text-gray-400">
+                  Total Visits
+                </div>
+              </div>
+              <div className="text-gray-500 dark:text-gray-400">
+                Created {moment(service.createdAt).fromNow()}
+              </div>
+              <div className="text-gray-500 dark:text-gray-400">
+                {service?.active
+                  ? "This content is currently published and visible to the public."
+                  : "This content is currently not published and not visible to the public."}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem className="mt-5">
+              <FormLabel>Description </FormLabel>
+              <FormControl>
+                <TextEditor
+                  className=""
+                  onDataUpdate={(data) => {
+                    field.onChange(data);
+                  }}
+                  content={field.value ?? ""}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
       </form>
     </Form>
   );
