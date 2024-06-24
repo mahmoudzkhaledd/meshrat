@@ -35,9 +35,14 @@
     "subLocation": "Come say hello at our office HQ."
   },
   "footer": {
-    "socialMedia": "Our Social Media Accounts"
+    "socialMedia": "Our Social Media Accounts",
+    "home": "Home",
+    "services": "Services",
+    "reviews": "Reviews",
+    "contact": "Contact us",
+    "blogs": "Articles"
   },
-  "servicesPage":{
+  "servicesPage": {
     "contactUs": "Contact Us",
     "currency": "EGP",
     "category": "Category",

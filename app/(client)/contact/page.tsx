@@ -3,6 +3,7 @@ import { contactUsItems } from "./_constants/items";
 
 import { getTranslations } from "next-intl/server";
 import { getWebsiteInfo } from "@/Controllers/Admin/Info/GetWebsiteInfo";
+import { Mail, MapPin, Phone } from "lucide-react";
 export const metadata: Metadata = {
   title: "Contact Us",
 };
@@ -22,31 +23,49 @@ export default async function ContactUsPage({}) {
       </div>
       <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-3">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-1">
-          {contactUsItems.map((e, idx) => (
-            <div key={idx}>
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-muted">
-                <e.icon className="m-auto w-5" />
-              </div>
-              <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">
-                {t(e.title)}
-              </h2>
-              {e.subTitle && (
-                <p className="text-sm text-gray-400">{t(e.subTitle)}</p>
-              )}
-              {e.href == null ? (
-                <p className="mt-2 text-sm text-blue-500 dark:text-blue-400">
-                  {info[e.info]}
-                </p>
-              ) : (
-                <a
-                  className="mt-2 text-sm text-blue-500 dark:text-blue-400"
-                  href={info[e.info]}
-                >
-                  {info[e.info]}
-                </a>
-              )}
+          <div>
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-muted">
+              <Mail className="m-auto w-5" />
             </div>
-          ))}
+            <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">
+              {t("email")}
+            </h2>
+            <p className="text-sm text-gray-400">{t("subEmail")}</p>
+            <a
+              className="mt-2 text-sm text-blue-500 dark:text-blue-400"
+              href={`mailto:${info.email}`}
+            >
+              {info.email}
+            </a>
+          </div>
+          <div>
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-muted">
+              <Phone className="m-auto w-5" />
+            </div>
+            <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">
+              {t("phone")}
+            </h2>
+
+            <a
+              className="mt-2 text-sm text-blue-500 dark:text-blue-400"
+              href={`tel:${info.phone}`}
+            >
+              {info.phone}
+            </a>
+          </div>
+          <div>
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-muted">
+              <MapPin className="m-auto w-5" />
+            </div>
+            <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">
+              {t("location")}
+            </h2>
+            <p className="text-sm text-gray-400">{t("subLocation")}</p>
+
+            <p className="mt-2 text-sm text-blue-500 dark:text-blue-400">
+              {info.location}
+            </p>
+          </div>
         </div>
         <div className="overflow-hidden rounded-lg lg:col-span-2 lg:h-auto">
           <iframe

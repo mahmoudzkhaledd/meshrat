@@ -6,9 +6,38 @@ import {
   setLanguage,
   useLanguage,
 } from "@/Controllers/language/languageClient";
+import { Button } from "../ui/button";
+import { Menu } from "lucide-react";
+import { useState } from "react";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTrigger,
+} from "../ui/sheet";
 
+const items = [
+  {
+    href: "/",
+    key: "home",
+  },
+  {
+    href: "/#services",
+    key: "services",
+  },
+  {
+    href: "/#reviews",
+    key: "reviews",
+  },
+  {
+    href: "/blogs",
+    key: "blogs",
+  },
+];
 export default function Navbar({ className }: { className?: string }) {
   const lang = useLanguage();
+  const [sheet, setSheet] = useState();
   const t = useTranslations("navbar");
   const handelChangeLang = () => {
     setLanguage(lang.notLang);
@@ -22,40 +51,18 @@ export default function Navbar({ className }: { className?: string }) {
       )}
     >
       <Logo className="w-14" />
-      <nav>
+      <nav className="hidden lg:block">
         <div className="flex items-center justify-between gap-20 lg:gap-28">
           <div className="flex items-center justify-between gap-16">
-            <a
-              className="mt-0.5 border-b-2 border-[#2b7dad] text-lg font-bold text-primary transition duration-500 hover:text-[#2b7dad]"
-              href="/"
-            >
-              {t("home")}
-            </a>
-
-            <a
-              className="text-lg font-bold text-[#1d4d85] transition duration-500 hover:text-[#2b7dad]"
-              href="/#services"
-            >
-              {t("services")}
-            </a>
-            <a
-              className="text-lg font-bold text-[#1d4d85] transition duration-500 hover:text-[#2b7dad]"
-              href="/#reviews"
-            >
-              {t("reviews")}
-            </a>
-            <a
-              className="text-lg font-bold text-[#1d4d85] transition duration-500 hover:text-[#2b7dad]"
-              href="/blogs"
-            >
-              {t("blogs")}
-            </a>
-            <a
-              className="text-lg font-bold text-[#1d4d85] transition duration-500 hover:text-[#2b7dad]"
-              href="/contact"
-            >
-              {t("contact")}
-            </a>
+            {items.map((e, idx) => (
+              <a
+                key={idx}
+                className="text-lg font-bold text-[#1d4d85] transition duration-500 hover:text-[#2b7dad]"
+                href={e.href}
+              >
+                {t(e.key)}
+              </a>
+            ))}
             <button
               onClick={handelChangeLang}
               lang={lang.notLang}
@@ -66,6 +73,31 @@ export default function Navbar({ className }: { className?: string }) {
           </div>
         </div>
       </nav>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant={"outline"} className="flex lg:hidden" size={"icon"}>
+            <Menu className="w-5" />
+          </Button>
+        </SheetTrigger>
+        <SheetContent className="flex flex-col pt-10">
+          {items.map((e, idx) => (
+            <a
+              key={idx}
+              className="text-lg text-center font-bold text-[#1d4d85] transition duration-500 hover:text-[#2b7dad]"
+              href={e.href}
+            >
+              {t(e.key)}
+            </a>
+          ))}
+          <button
+            onClick={handelChangeLang}
+            lang={lang.notLang}
+            className="text-lg text-center font-bold text-[#1d4d85] transition duration-500 hover:text-[#2b7dad]"
+          >
+            {lang.lang == "ar" ? "English" : "عربي"}
+          </button>
+        </SheetContent>
+      </Sheet>
     </div>
   );
 }

@@ -23,13 +23,19 @@ export default async function Footer({ className }: { className?: string }) {
         </div>
         <div className="flex flex-col">
           {info.location && <p className="my-3">{info.location}</p>}
-          <p>{info.phone}</p>
+          <a
+            className="text-blue-500 underline dark:text-blue-400"
+            href={`tel:${info.phone}`}
+          >
+            {info.phone}
+          </a>
         </div>
         <div className="flex justify-between gap-10">
-          <ul>
-            <li>Home</li>
-            <li>Services</li>
-            <li>Reviews</li>
+          <ul className="flex flex-col gap-1">
+            <a href="/">{t("home")}</a>
+            <a href="/#services">{t("services")}</a>
+            <a href="/blogs">{t("blogs")}</a>
+            <a href="/contact">{t("contact")}</a>
           </ul>
         </div>
         <div className="max-w-xs">

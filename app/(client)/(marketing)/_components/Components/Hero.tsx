@@ -1,12 +1,19 @@
 import Link from "next/link";
 import React from "react";
 import { useTranslations } from "next-intl";
+import { getLanguage } from "@/Controllers/language/languageUtils";
+import { cn } from "@/lib/utils";
 export default function HeroSection() {
   const t = useTranslations("homePage.hero");
+  const lang = getLanguage();
   return (
     <section className="pt-24 md:pt-32" id="home">
       <div className="flex flex-col-reverse items-center justify-between gap-10 text-center md:flex-row md:text-left">
-        <div className=" tracking-wider md:tracking-normal ">
+        <div
+          className={cn("tracking-wider md:tracking-normal", {
+            "text-right": (lang.lang == "ar"),
+          })}
+        >
           <h1 className="text-4xl font-bold lg:text-7xl">{t("title")}</h1>
           <p className="my-10 text-lg md:text-base lg:text-xl">
             {t("subtitle")}

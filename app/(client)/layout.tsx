@@ -15,7 +15,7 @@ export default async function MarketingLayout({
   return (
     <WebsiteInfoProvider info={info ?? siteDefaultConfigs}>
       <section lang={locale} dir={locale == "ar" ? "rtl" : "ltr"} className="flex min-h-full flex-col px-[30px] pb-10 lg:px-[200px]">
-        <div className="h-full">
+        <div className="h-full pb-10">
           <Navbar />
           <div className="mt-[90px]">{children}</div>
         </div>

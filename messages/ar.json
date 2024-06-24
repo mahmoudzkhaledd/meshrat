@@ -35,7 +35,12 @@
     "subLocation": "تفضل بزيارتنا في مقر مكتبنا."
   },
   "footer": {
-    "socialMedia": "حساباتنا على السوشيال ميديا"
+    "socialMedia": "حساباتنا على السوشيال ميديا",
+    "home": "الرئيسية",
+    "services": "الخدمات",
+    "reviews": "المراجعات",
+    "contact": "تواصل معنا",
+    "blogs": "المقالات"
   },
   "servicesPage":{
     "contactUs": "تواصل معنا",
