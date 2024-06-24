@@ -1,5 +1,40 @@
 {
-    "Index": {
-      "title": "Hello world!"
+  "navbar": {
+    "home": "Home",
+    "services": "Services",
+    "reviews": "Reviews",
+    "contact": "Contact us",
+    "blogs": "Articles"
+  },
+  "homePage": {
+    "hero": {
+      "title": "Home Cupping Services Number 1 in Egypt",
+      "subtitle": "We have been providing home cupping services across Egypt with the highest efficiency and the most affordable prices for over 3 years.",
+      "button": "Contact Us"
+    },
+    "servicesSection": {
+      "title": "Services",
+      "button": "See details"
+    },
+    "patientFeedback": {
+      "title": "Testimonials & Reviews"
     }
+  },
+  "blogsPage": {
+    "notFound": "No Artivles Available",
+    "notFoundSubDescription": "It looks like there are no blog posts available at the moment. Please check back later or contact the site owner for more information."
+  },
+  "contactPage": {
+    "topTitle": "Contact Us",
+    "title": "Get in touch",
+    "subTitle": "Our friendly team would love to hear from you.",
+    "email": "Email",
+    "subEmail": "Our friendly team is here to help.",
+    "phone": "Phone",
+    "location": "Location",
+    "subLocation": "Come say hello at our office HQ."
+  },
+  "footer": {
+    "socialMedia": "Our Social Media Accounts"
   }
+}

@@ -5,6 +5,8 @@ import { toInt } from "@/lib/utils";
 import CustomPagination from "@/components/GeneralComponents/CustomPagination";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
+import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Blogs",
@@ -32,17 +34,15 @@ export default async function BlogsPage({
       published: true,
     },
   });
-
+  const t = await getTranslations("blogsPage");
   return (
     <div className="w-full px-4">
       {blogs.length == 0 ? (
         <div className="m-auto flex flex-col items-center justify-center px-4">
           <div className="max-w-md space-y-4 text-center">
-            <h2 className="text-3xl font-bold">No Blog Posts Available</h2>
+            <h2 className="text-3xl font-bold">{t("notFound")}</h2>
             <p className="text-gray-500 dark:text-gray-400">
-              It looks like there are no blog posts available at the moment.
-              Please check back later or contact the site owner for more
-              information.
+              {t("notFoundSubDescription")}
             </p>
           </div>
         </div>

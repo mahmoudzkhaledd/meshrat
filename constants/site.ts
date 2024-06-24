@@ -1,3 +1,4 @@
+import { WebsiteInfo } from "@prisma/client";
 import { Facebook, Instagram, Phone } from "lucide-react";
 
 export const siteConfig = {
@@ -16,4 +17,15 @@ export const siteConfig = {
       link: "http://Wa.me/+201064188541",
     },
   ],
+};
+export const siteDefaultConfigs: WebsiteInfo = {
+  id: 0,
+  phone: "",
+  location: "",
+  email: "",
+  twitter: null,
+  linkedIn: null,
+  facebook: null,
+  instagram: null,
+  whatsapp: null,
 };

@@ -9,6 +9,7 @@ import InsightaProvider from "@/components/Providers/InsightaProvider";
 import { siteConfig } from "@/constants/site";
 
 import { cookies } from "next/headers";
+import { getLocale, getMessages } from "next-intl/server";
 
 const inter = Inter({ subsets: ["latin"] });
 const almarai = Almarai({
@@ -42,28 +43,32 @@ export const metadata: Metadata = {
     "At Meshrat Wellness, we are dedicated to enhancing your health and well-being through expert-driven holistic treatments. Founded by Dr. Osama Elngar, a renowned physiotherapist with extensive experience in muscle treatment and recovery, our clinic stands as a beacon of healing and relaxation.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: Readonly<{
   params: { locale: string };
   children: React.ReactNode;
 }>) {
-  // const session = await authXAdmin();
-  const coo = cookies();
-  const lang = coo.get("NEXT_LOCALE")?.value ?? "en";
-  const locale = lang == "ar" ? "ar" : "en";
+  const locale = await getLocale();
+  const messages = await getMessages();
 
   return (
-    <html lang={'en'} suppressHydrationWarning>
-      <body className={inter.className}>
-        <AuthXProvider session={null}>
-          <TooltipProvider delayDuration={30}>
-            <Toaster />
-            {children}
-            <InsightaProvider />
-          </TooltipProvider>
-        </AuthXProvider>
+    <html
+      lang={locale}
+      dir={locale == "ar" ? "rtl" : "ltr"}
+      suppressHydrationWarning
+    >
+      <body className={locale == "ar" ? almarai.className : inter.className}>
+        <NextIntlClientProvider messages={messages}>
+          <AuthXProvider session={null}>
+            <TooltipProvider delayDuration={30}>
+              <Toaster />
+              {children}
+              <InsightaProvider />
+            </TooltipProvider>
+          </AuthXProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

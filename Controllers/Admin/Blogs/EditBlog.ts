@@ -29,7 +29,7 @@ export const editBlog = async (
     const model: z.infer<typeof editBlogSchema> = editBlogSchema.parse(data);
     let slug = tmpBlog.slug;
     const slugArr = slug.split("-");
-    console.log(slug);
+
     if (
       ((slugArr.length >= 2 &&
         slugArr.at(slugArr.length - 2) == "" &&

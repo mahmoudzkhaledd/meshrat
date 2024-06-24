@@ -22,6 +22,10 @@ export const adminNavbarItems: NavbarProps[] = [
         link: "/admin/blogs",
     },
     {
+        name: "Info",
+        link: "/admin/info",
+    },
+    {
         name: "Main Page",
         link: "/",
         newTap: true,

@@ -7,6 +7,10 @@ import { Service } from "@prisma/client";
 import { Metadata } from "next";
 import { convert } from "html-to-text";
 import { authXAdmin } from "@/authXAdmin";
+import { franc } from "franc";
+import { Button } from "@/components/ui/button";
+import { getTranslations } from "next-intl/server";
+import Link from "next/link";
 
 const checkAuth = cache(async () => {
   const session = await authXAdmin();
@@ -69,14 +73,13 @@ export default async function ServicePage({
       },
     });
   }
-
-
-
+  const t = await getTranslations("homePage");
   return (
     <div>
       {!service.active && (
-        <div className="mb-4 w-full flex gap-2 rounded-md bg-red-500 px-5 py-3 text-white">
-          <Info className="w-4 min-w-4"/> This service is not published and you entered by admin mode.
+        <div className="mb-4 flex w-full gap-2 rounded-md bg-red-500 px-5 py-3 text-white">
+          <Info className="w-4 min-w-4" /> This service is not published and you
+          entered by admin mode.
         </div>
       )}
       <section className="w-full">
@@ -112,6 +115,9 @@ export default async function ServicePage({
                 </p>
               </div>
             </div>
+            <Link className="w-full" href={"/contact"}>
+              <Button>{t("hero.button")}</Button>
+            </Link>
           </div>
         </div>
       </section>

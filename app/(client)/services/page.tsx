@@ -1,7 +1,7 @@
 import CustomHeader from "@/components/GeneralComponents/CustomHeader";
 import NotFoundComponent from "@/components/GeneralComponents/NotFoundComponent";
 import ServiceCard from "@/components/GeneralComponents/ServiceCard";
-import { configs } from "@/constants/CoreTexts";
+
 import { prisma } from "@/lib/db";
 import { Info } from "lucide-react";
 import { Metadata } from "next";
@@ -23,7 +23,6 @@ export default async function ServicesPage({}) {
   
   return (
     <section>
-      <CustomHeader data={configs.servicesPage} />
       <div className="flex flex-row flex-wrap gap-4">
         {services.map((e, idx) => (
           <ServiceCard key={idx} service={e} />

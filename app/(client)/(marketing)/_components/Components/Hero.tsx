@@ -2,26 +2,24 @@ import Link from "next/link";
 import React from "react";
 import { useTranslations } from "next-intl";
 export default function HeroSection() {
+  const t = useTranslations("homePage.hero");
   return (
     <section className="pt-24 md:pt-32" id="home">
       <div className="flex flex-col-reverse items-center justify-between gap-10 text-center md:flex-row md:text-left">
-        <div className="max-w-xs tracking-wider md:tracking-normal lg:max-w-xl">
-          <h1 className="text-4xl font-bold lg:text-7xl">
-            Your Health Is Our Top Priority
-          </h1>
+        <div className=" tracking-wider md:tracking-normal ">
+          <h1 className="text-4xl font-bold lg:text-7xl">{t("title")}</h1>
           <p className="my-10 text-lg md:text-base lg:text-xl">
-            Securely share your comprehensive medical history with doctors and
-            loved ones, for better communication and care.
+            {t("subtitle")}
           </p>
           <Link href={"/contact"}>
             <button className="rounded-3xl bg-blue-400 bg-primary px-8 py-2 text-white shadow-lg transition hover:bg-[#158ace]">
-              Contact us
+              {t("button")}
             </button>
           </Link>
         </div>
-        <div className="max-w-xs md:max-w-none">
+        <div className=" ">
           <img
-            className="max-w-[250px] animate-bounce"
+            className="fade max-w-[250px]"
             src="/images/logo.png"
             alt="hero"
           />

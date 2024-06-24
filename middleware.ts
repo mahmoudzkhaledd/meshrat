@@ -24,7 +24,7 @@ const handelApiRoutes = (req: NextRequest) => {
 };
 const handelAdminRoutes = async (req: NextRequest) => {
   const user = await authXAdmin();
-  console.log('user: ',user)
+
   const isLoggedin = user?.user != null;
   const route = req.nextUrl;
   const isAuthRoute = isUrlMatching(route.pathname, adminAuthRoutes);
@@ -49,32 +49,11 @@ const intlMiddleware = createMiddleware({
   defaultLocale: "en",
 });
 const middleware = async (req: NextRequest) => {
-  console.log("req.nextUrl.pathname")
+ 
   if (req.nextUrl.pathname.startsWith("/api")) return handelApiRoutes(req);
   if (req.nextUrl.pathname.startsWith("/admin")) return handelAdminRoutes(req);
 
-  const user = await authXAdmin();
-
-  const isLoggedin = user?.user != null;
-  const route = req.nextUrl;
-  const isApiRoute = route.pathname.startsWith(apiAuthPrefix);
-
-  const isPublicRoute = isUrlMatching(route.pathname, publicRoutes);
-
-  const isAuthRoute = isUrlMatching(route.pathname, authRoutes);
-  if (isApiRoute) {
-    return null;
-  }
-  if (isAuthRoute) {
-    if (isLoggedin) {
-      return Response.redirect(new URL(DEFAULT_REDIRECT, route));
-    }
-    return null;
-  }
-
-  // if (!isLoggedin && !isPublicRoute) {
-  //     return Response.redirect(new URL(notAuthorizedRedirect, route));
-  // }
+  
   return null;
 };
 
@@ -84,6 +63,5 @@ export const config = {
     "/((?!.+\\.[\\w]+$|_next).*)",
     "/",
     "/(api|trpc)(.*)",
-    
   ],
 };

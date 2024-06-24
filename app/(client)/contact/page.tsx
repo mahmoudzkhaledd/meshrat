@@ -1,21 +1,24 @@
 import { Metadata } from "next";
 import { contactUsItems } from "./_constants/items";
+
+import { getTranslations } from "next-intl/server";
+import { getWebsiteInfo } from "@/Controllers/Admin/Info/GetWebsiteInfo";
 export const metadata: Metadata = {
   title: "Contact Us",
 };
-export default function ContactUsPage({}) {
+export default async function ContactUsPage({}) {
+  const t = await getTranslations("contactPage");
+  const info = await getWebsiteInfo();
   return (
     <section className="bg-white pb-20 dark:bg-gray-900">
       <div>
         <p className="font-medium text-blue-500 dark:text-blue-400">
-          Contact us
+          {t("topTitle")}
         </p>
         <h1 className="mt-2 text-2xl font-semibold text-gray-800 dark:text-white md:text-3xl">
-          Get in touch
+          {t("title")}
         </h1>
-        <p className="mt-3 text-gray-500 dark:text-gray-400">
-          Our friendly team would love to hear from you.
-        </p>
+        <p className="mt-3 text-gray-500 dark:text-gray-400">{t("subTitle")}</p>
       </div>
       <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-3">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-1">
@@ -25,21 +28,21 @@ export default function ContactUsPage({}) {
                 <e.icon className="m-auto w-5" />
               </div>
               <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">
-                {e.title}
+                {t(e.title)}
               </h2>
               {e.subTitle && (
-                <p className="text-sm text-gray-400">{e.subTitle}</p>
+                <p className="text-sm text-gray-400">{t(e.subTitle)}</p>
               )}
               {e.href == null ? (
                 <p className="mt-2 text-sm text-blue-500 dark:text-blue-400">
-                  {e.info}
+                  {info[e.info]}
                 </p>
               ) : (
                 <a
                   className="mt-2 text-sm text-blue-500 dark:text-blue-400"
-                  href={e.href}
+                  href={info[e.info]}
                 >
-                  {e.info}
+                  {info[e.info]}
                 </a>
               )}
             </div>

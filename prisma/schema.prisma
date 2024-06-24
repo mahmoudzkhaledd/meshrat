@@ -58,3 +58,25 @@ model Blog {
 
   @@index([slug])
 }
+
+model WebsiteInfo {
+  id Int @id @default(autoincrement())
+
+  email     String
+  phone     String
+  location  String
+  linkedIn  String?
+  facebook  String?
+  twitter   String?
+  instagram String?
+  whatsapp  String?
+}
+
+model Review {
+  id Int @id @default(autoincrement())
+
+  imageUrl String
+  title    String
+  subTitle String
+  text     String
+}

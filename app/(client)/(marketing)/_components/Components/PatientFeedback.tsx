@@ -1,10 +1,13 @@
+import { useTranslations } from "next-intl";
 import React from "react";
 
 export default function PatientFeedback() {
+  const t = useTranslations('homePage.patientFeedback');
+
   return (
     <section className="pt-24 md:pt-32" id="reviews">
       <h3 className="mb-10 text-center text-3xl font-bold md:mb-20">
-        Patient Feedback
+       {t('title')}
       </h3>
       <div className="flex flex-col items-center justify-center gap-5 md:flex-row">
         <div className="false max-w-[300px] rounded-3xl bg-[#d5f5ff] p-5 shadow-lg">
