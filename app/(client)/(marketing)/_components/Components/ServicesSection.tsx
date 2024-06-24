@@ -4,10 +4,11 @@ import { useTranslations } from "next-intl";
 import React from "react";
 
 export default function ServicesSection({ services }: { services: Service[] }) {
+  const t = useTranslations("homePage.servicesSection");
   if (services.length == 0) {
     return <></>;
   }
-  const t = useTranslations("homePage.servicesSection");
+  
 
   return (
     <section className="pt-24 md:pt-32" id="services">
