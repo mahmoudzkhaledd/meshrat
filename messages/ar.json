@@ -36,5 +36,13 @@
   },
   "footer": {
     "socialMedia": "حساباتنا على السوشيال ميديا"
+  },
+  "servicesPage":{
+    "contactUs": "تواصل معنا",
+    "currency": "جنيه",
+    "category": "تصنيف",
+    "description": "الوصف",
+    "price": "السعر",
+    "notFound": "هذه الخدمة غير منشورة وقمت بالدخول عبر وضع الإدارة."
   }
 }

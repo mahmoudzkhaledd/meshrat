@@ -54,11 +54,7 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html
-      lang={locale}
-      dir={locale == "ar" ? "rtl" : "ltr"}
-      suppressHydrationWarning
-    >
+    <html  suppressHydrationWarning>
       <body className={locale == "ar" ? almarai.className : inter.className}>
         <NextIntlClientProvider messages={messages}>
           <AuthXProvider session={null}>

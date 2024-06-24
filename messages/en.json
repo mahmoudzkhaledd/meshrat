@@ -36,5 +36,13 @@
   },
   "footer": {
     "socialMedia": "Our Social Media Accounts"
+  },
+  "servicesPage":{
+    "contactUs": "Contact Us",
+    "currency": "EGP",
+    "category": "Category",
+    "price": "Price",
+    "description": "Description",
+    "notFound": "This service is not published and you entered by admin mode."
   }
 }

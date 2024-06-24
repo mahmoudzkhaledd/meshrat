@@ -4,16 +4,17 @@ import React from "react";
 import WebsiteInfoProvider from "@/components/Providers/WebsiteInfoProvider";
 import { siteDefaultConfigs } from "@/constants/site";
 import { getWebsiteInfo } from "@/Controllers/Admin/Info/GetWebsiteInfo";
+import { getLocale } from "next-intl/server";
 export default async function MarketingLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const info = await getWebsiteInfo();
-
+  const locale = await getLocale();
   return (
     <WebsiteInfoProvider info={info ?? siteDefaultConfigs}>
-      <section className="flex min-h-full flex-col px-[30px] pb-10 lg:px-[200px]">
+      <section lang={locale} dir={locale == "ar" ? "rtl" : "ltr"} className="flex min-h-full flex-col px-[30px] pb-10 lg:px-[200px]">
         <div className="h-full">
           <Navbar />
           <div className="mt-[90px]">{children}</div>

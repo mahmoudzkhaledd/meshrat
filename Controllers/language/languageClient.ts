@@ -13,5 +13,5 @@ export const useLanguage = (): { lang: "ar" | "en"; notLang: "ar" | "en" } => {
 };
 
 export const setLanguage = (lang: "ar" | "en") => {
-    document.cookie = `NEXT_LOCALE=${lang};`;
+    document.cookie = `NEXT_LOCALE=${lang};path=/;`;
 };
