@@ -20,11 +20,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
 
-export default function InfoForm({
-  info,
-}: {
-  info?: WebsiteInfo ;
-}) {
+export default function InfoForm({ info }: { info?: WebsiteInfo }) {
   const [loading, startTrans] = useTransition();
 
   const form = useForm<z.infer<typeof websiteInfoSchema>>({
@@ -37,6 +33,7 @@ export default function InfoForm({
       instagram: info?.instagram ?? undefined,
       whatsapp: info?.whatsapp ?? undefined,
       twitter: info?.twitter ?? undefined,
+      email: info?.email ?? "",
     },
   });
   const handleSubmit = (e: any) => {
