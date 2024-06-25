@@ -5,7 +5,7 @@ import { useLocale } from "next-intl";
 export const useLanguage = (): { lang: "ar" | "en"; notLang: "ar" | "en" } => {
   const lang = useLocale();
 
-  const l = lang == "ar" ? "ar" : "en";
+  const l = lang == "en" ? "en" : "ar";
   return {
     lang: l,
     notLang: l == "ar" ? "en" : "ar",

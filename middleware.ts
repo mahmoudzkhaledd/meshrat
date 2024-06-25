@@ -41,13 +41,6 @@ const handelAdminRoutes = async (req: NextRequest) => {
   return null;
 };
 
-const intlMiddleware = createMiddleware({
-  // A list of all locales that are supported
-  locales: ["en", "ar"],
-
-  // Used when no locale matches
-  defaultLocale: "en",
-});
 const middleware = async (req: NextRequest) => {
  
   if (req.nextUrl.pathname.startsWith("/api")) return handelApiRoutes(req);
