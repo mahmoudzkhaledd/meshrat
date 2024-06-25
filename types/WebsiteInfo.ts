@@ -1,11 +1,11 @@
 import { z } from "zod";
 
 const reviewSchema = z.object({
-  websiteInfoId: z.number(),
-  imageUrl: z.string(),
+  id: z.number().optional().nullable(),
   title: z.string(),
-  subTitle: z.string(),
-  text: z.string(),
+  date: z.date(),
+  personName: z.string(),
+  review: z.string(),
 });
 
 const websiteInfoSchema = z.object({

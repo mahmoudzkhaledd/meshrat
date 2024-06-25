@@ -10,14 +10,18 @@
     "hero": {
       "title": "Home Cupping Services Number 1 in Egypt",
       "subtitle": "We have been providing home cupping services across Egypt with the highest efficiency and the most affordable prices for over 3 years.",
-      "button": "Contact Us"
+      "button": "Contact Us",
+      "service": "24/7 service",
+      "price": "Affordable prices for everyone",
+      "location": "Anywhere in Egypt",
+      "expert": "Highly experienced professionals"
     },
     "servicesSection": {
       "title": "Services",
       "button": "See details"
     },
     "patientFeedback": {
-      "title": "Testimonials & Reviews"
+      "title": "Feedback"
     }
   },
   "blogsPage": {
@@ -49,5 +53,8 @@
     "price": "Price",
     "description": "Description",
     "notFound": "This service is not published and you entered by admin mode."
+  },
+  "general": {
+    "whatsappContact": "Connect through WhatsApp"
   }
 }

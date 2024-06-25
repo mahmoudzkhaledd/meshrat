@@ -26,7 +26,7 @@ export default function RecentBlogs({ blogs }: { blogs: Blog[] }) {
         </CardTitle>
         <CardDescription>Top 5 blogs of the website</CardDescription>
       </CardHeader>
-      <CardContent className="grid gap-8">
+      <CardContent className="grid gap-2">
         {blogs.map((e, idx) => (
           <Link
             href={`/admin/blogs/${e.id}`}

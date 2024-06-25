@@ -45,7 +45,41 @@ export function isUrlMatching(url: string, routes: Array<String>) {
   }
   return false;
 }
-
+export function formatArabicDate(date: Date): string {
+  var date = new Date("2016-12-04");
+  var months = [
+    "يناير",
+    "فبراير",
+    "مارس",
+    "إبريل",
+    "مايو",
+    "يونيو",
+    "يوليو",
+    "أغسطس",
+    "سبتمبر",
+    "أكتوبر",
+    "نوفمبر",
+    "ديسمبر",
+  ];
+  var days = [
+    "اﻷحد",
+    "اﻷثنين",
+    "الثلاثاء",
+    "اﻷربعاء",
+    "الخميس",
+    "الجمعة",
+    "السبت",
+  ];
+  var delDateString =
+    days[date.getDay()] +
+    ", " +
+    date.getDate() +
+    " " +
+    months[date.getMonth()] +
+    ", " +
+    date.getFullYear();
+  return delDateString;
+}
 export function isValidHexaCode(str: string) {
   let regex = new RegExp(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/);
   if (str == null) {

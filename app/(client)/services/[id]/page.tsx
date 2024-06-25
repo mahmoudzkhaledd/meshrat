@@ -119,7 +119,7 @@ export default async function ServicePage({
             </div>
             <div className="flex gap-4 items-center">
               <Link  className="w-fit" href={"/contact"}>
-                <Button size={'sm'}>{t("contactUs")}</Button>
+                <Button >{t("contactUs")}</Button>
               </Link>
               <WhatsAppContact />
             </div>

@@ -8,20 +8,20 @@ export default async function LandingPage({}) {
   const services = await prisma?.service.findMany({
     orderBy: {
       createdAt: "desc",
-
     },
-    where:{
+    where: {
       active: true,
-    }
+    },
   });
+  const reviews = await prisma?.review.findMany();
   const cook = cookies();
   return (
     <div className="app min-h-screen min-w-[280px] bg-background text-[#1d4d85]">
       <div className="m-auto max-w-[1250px] px-5 md:px-16">
         <HeroSection />
-        <ServicesSection services={services}/>
+        <ServicesSection services={services} />
         {/* <SpecialistSection /> */}
-        <PatientFeedback />
+        <PatientFeedback reviews={JSON.parse(JSON.stringify(reviews))} />
       </div>
     </div>
   );

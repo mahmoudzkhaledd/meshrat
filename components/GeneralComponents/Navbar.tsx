@@ -12,8 +12,6 @@ import { useState } from "react";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
   SheetTrigger,
 } from "../ui/sheet";
 
@@ -46,7 +44,7 @@ export default function Navbar({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "fixed left-0 right-0 top-0 flex w-full items-center justify-between bg-white p-5 transition md:px-16",
+        "fixed left-0 right-0 top-0 flex w-full items-center z-50 justify-between bg-white p-5 transition md:px-16",
         className,
       )}
     >

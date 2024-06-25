@@ -11,11 +11,11 @@ body,
   scroll-behavior: smooth;
 }
 
-[lang="ar"] {
+[lang="ar"],
+.arabic-text {
   font-family: 'Almarai';
   direction: rtl;
 }
-
 
 
 .glow {

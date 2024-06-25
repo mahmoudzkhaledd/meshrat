@@ -73,10 +73,11 @@ model WebsiteInfo {
 }
 
 model Review {
-  id Int @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
+  title      String
 
-  imageUrl String
-  title    String
-  subTitle String
-  text     String
+  date       DateTime
+  personName String
+  review     String
+  createdAt  DateTime @default(now())
 }

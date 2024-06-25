@@ -59,7 +59,7 @@ export default function InfoForm({ info }: { info?: WebsiteInfo }) {
           render={({ field }) => {
             return (
               <FormItem className="">
-                <FormLabel> {item} </FormLabel>
+                <FormLabel className="capitalize"> {item} </FormLabel>
                 <FormControl>
                   {
                     // @ts-ignore
@@ -76,14 +76,13 @@ export default function InfoForm({ info }: { info?: WebsiteInfo }) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)}>
-        <div className="flex justify-end">
+        <div className="mb-5 flex justify-between">
+          <h2 className="text-xl font-semibold">Contact Information</h2>
           <Button type="submit" disabled={loading} loading={loading}>
             Save
           </Button>
         </div>
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <div className="col-span-1 space-y-5">{Items}</div>
-        </div>
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">{Items}</div>
       </form>
     </Form>
   );
