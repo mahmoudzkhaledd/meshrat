@@ -7,6 +7,7 @@ const ctx = createContext<Blog>({
   slug: "",
   bannerImage: "",
   content: "",
+  arabic: false,
   visits: 0,
   createdAt: new Date(),
   updatedAt: new Date(),
