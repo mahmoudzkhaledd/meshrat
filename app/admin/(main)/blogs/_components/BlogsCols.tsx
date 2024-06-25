@@ -19,6 +19,16 @@ export const blogsCols: ColumnDef<Blog>[] = [
     },
   },
   {
+    header: "Language",
+    cell: (row) => {
+      return (
+        <>
+          {row.row.original.arabic ? "Arabic" : "English"}
+        </>
+      );
+    },
+  },
+  {
     header: "State",
     cell: (row) => {
       return (
