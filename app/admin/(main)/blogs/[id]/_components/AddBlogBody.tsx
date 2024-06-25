@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 import moment from "moment";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
+import { Switch } from "@/components/ui/switch";
 
 export default function AddBlogBody() {
   const [pending, startTrans] = useTransition();
@@ -59,7 +60,6 @@ export default function AddBlogBody() {
             ? `Blog ${publish ? "published" : "not published"} successfully`
             : "Changes saved successfully",
         );
- 
       }
     });
   };
@@ -149,7 +149,7 @@ export default function AddBlogBody() {
                 </Button>
               </div>
             )}
-            {(imageUrl == null && !pending) && (
+            {imageUrl == null && !pending && (
               <input
                 type="file"
                 id="uploadBanner"
@@ -161,30 +161,53 @@ export default function AddBlogBody() {
             )}
           </label>
         </div>
-        <Card className="w-full">
-          <CardHeader>
-            <CardTitle className="flex flex-wrap gap-2">
-              Visit Statistics{" "}
-              <Badge>{blog.published ? "Published" : "Not Published"}</Badge>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="grid gap-3">
-            <div className="grid gap-2">
-              <div className="text-4xl font-bold">{blog.visits}</div>
-              <div className="text-gray-500 dark:text-gray-400">
-                Total Visits
+        <div className="w-full space-y-4">
+          <Card className="h-fit w-full">
+            <CardHeader>
+              <CardTitle className="flex flex-wrap gap-2">
+                Visit Statistics{" "}
+                <Badge>{blog.published ? "Published" : "Not Published"}</Badge>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="grid gap-3">
+              <div className="grid gap-2">
+                <div className="text-4xl font-bold">{blog.visits}</div>
+                <div className="text-gray-500 dark:text-gray-400">
+                  Total Visits
+                </div>
               </div>
-            </div>
-            <div className="text-gray-500 dark:text-gray-400">
-              Created {moment(blog.createdAt).fromNow()}
-            </div>
-            <div className="text-gray-500 dark:text-gray-400">
-              {blog.published
-                ? "This content is currently published and visible to the public."
-                : "This content is currently not published and not visible to the public."}
-            </div>
-          </CardContent>
-        </Card>
+              <div className="text-gray-500 dark:text-gray-400">
+                Created {moment(blog.createdAt).fromNow()}
+              </div>
+              <div className="text-gray-500 dark:text-gray-400">
+                {blog.published
+                  ? "This content is currently published and visible to the public."
+                  : "This content is currently not published and not visible to the public."}
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="h-fit w-full">
+            <CardHeader>
+              <CardTitle className="flex flex-wrap gap-2">
+                Article Language
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="grid gap-3">
+              <div className="grid gap-2">
+                <div className="text-4xl font-bold">
+                  {blog.arabic ? "Arabic" : "English"}
+                </div>
+                <div className="flex gap-2 items-center">
+                  <p>Arabic</p>
+                  <Switch
+                    defaultChecked={blog.arabic}
+                    onCheckedChange={(e) => (blog.arabic = e)}
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
       <textarea
         onKeyDown={(e) => {

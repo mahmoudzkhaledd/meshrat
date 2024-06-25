@@ -30,6 +30,7 @@ model Service {
   doneOrders     Int      @default(0)
   pendingOrders  Int      @default(0)
   name           String
+  arabic         Boolean  @default(false)
   rating         Float    @default(0)
   category       String
   price          Float
@@ -48,6 +49,7 @@ model Blog {
   admin       Admin    @relation(fields: [adminId], references: [id])
   title       String
   slug        String   @unique
+  arabic      Boolean  @default(false)
   bannerImage String?
   content     String
   visits      Int      @default(0)
@@ -73,8 +75,8 @@ model WebsiteInfo {
 }
 
 model Review {
-  id         Int      @id @default(autoincrement())
-  title      String
+  id    Int    @id @default(autoincrement())
+  title String
 
   date       DateTime
   personName String

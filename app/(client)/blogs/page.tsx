@@ -7,6 +7,7 @@ import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
+import { getLanguage } from "@/Controllers/language/languageUtils";
 
 export const metadata: Metadata = {
   title: "Blogs",
@@ -18,10 +19,11 @@ export default async function BlogsPage({
   searchParams: { page: string };
 }) {
   const page = toInt(searchParams.page) ?? 0;
-  cookies();
+  const lang = getLanguage()
   const blogs = await prisma.blog.findMany({
     where: {
       published: true,
+      arabic: lang.lang == 'ar',
     },
     take: 10,
     skip: page * 10,
@@ -32,6 +34,7 @@ export default async function BlogsPage({
   const count = await prisma.blog.count({
     where: {
       published: true,
+      arabic: lang.lang == 'ar',
     },
   });
   const t = await getTranslations("blogsPage");

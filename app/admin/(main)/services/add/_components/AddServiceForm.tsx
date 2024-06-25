@@ -20,6 +20,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { cn, toInt } from "@/lib/utils";
 import addServiceSchema from "@/types/AddServiceSchema";
@@ -40,7 +42,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
       name: service?.name ?? "",
       category: service?.category ?? "",
       price: service?.price ?? 0,
-
+      arabic: service?.arabic ?? false,
       description: service?.description ?? "",
       subDescription: service?.subDescription ?? "",
       active: service?.active ?? false,
@@ -79,6 +81,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
     reader.readAsDataURL(e?.target?.files[0]);
   };
   const handelSubmit = (data: any, publish?: boolean) => {
+
     startTrans(async () => {
       const res =
         service == null
@@ -88,7 +91,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
                 name: data?.name ?? "",
                 category: data?.category ?? "",
                 price: data?.price ?? 0,
-
+                arabic: data?.arabic ?? false,
                 description: data?.description ?? "",
                 subDescription: data?.subDescription ?? "",
                 active: publish == null ? service.active : publish,
@@ -138,6 +141,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
             <h2 className="text-xl font-bold">
               {service?.name ?? "Add new service"}
             </h2>
+
             {service != null && (
               <Link target="__blank" href={`/services/${service?.id}`}>
                 <Button
@@ -188,6 +192,23 @@ export default function AddServiceForm({ service }: { service?: Service }) {
           })}
         >
           <div className="flex flex-col space-y-5">
+            <FormField
+              control={form.control}
+              name="arabic"
+              render={({ field }) => (
+                <FormItem className="flex items-center gap-2">
+                  <FormControl>
+                    <Switch
+                      disabled={loading}
+                      checked={field.value}
+                      onCheckedChange={(e) => field.onChange(e ?? false)}
+                    />
+                  </FormControl>
+                  <FormLabel>Arabic</FormLabel>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="name"
@@ -264,7 +285,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
           </div>
           {service != null && (
             <div className="col-span-1 space-y-5">
-              <div className="lg:text-2lx mx-auto aspect-video  w-full max-w-[700px] overflow-hidden rounded-lg border bg-gray-50 lg:mx-0">
+              <div className="lg:text-2lx mx-auto aspect-video w-full max-w-[700px] overflow-hidden rounded-lg border bg-gray-50 lg:mx-0">
                 <label
                   className={cn(
                     "relative flex h-full w-full items-center justify-center",
@@ -280,7 +301,10 @@ export default function AddServiceForm({ service }: { service?: Service }) {
                     </p>
                   ) : (
                     <div className="">
-                      <img src={imageUrl} className="z-0 w-full  object-contain" />
+                      <img
+                        src={imageUrl}
+                        className="z-0 w-full object-contain"
+                      />
                       <Button
                         onClick={handelDeleteImage}
                         size={"icon"}
@@ -308,7 +332,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
           )}
         </div>
         {service != null && (
-          <Card className="w-full mt-5">
+          <Card className="mt-5 w-full">
             <CardHeader>
               <CardTitle className="flex flex-wrap gap-2">
                 Visit Statistics

@@ -7,7 +7,7 @@ import { Service } from "@prisma/client";
 import { Metadata } from "next";
 import { convert } from "html-to-text";
 import { authXAdmin } from "@/authXAdmin";
-import { franc } from "franc";
+
 import { Button } from "@/components/ui/button";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
@@ -24,6 +24,7 @@ const getServiceById = cache(async (id: string): Promise<Service | null> => {
   const service = await prisma.service.findUnique({
     where: {
       id: id,
+
     },
   });
   if (session?.user.id && session.user.type == "admin") {

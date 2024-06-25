@@ -3,14 +3,17 @@ import ServicesSection from "./_components/Components/ServicesSection";
 import PatientFeedback from "./_components/Components/PatientFeedback";
 import { prisma } from "@/lib/db";
 import { cookies } from "next/headers";
+import { getLanguage } from "@/Controllers/language/languageUtils";
 
 export default async function LandingPage({}) {
+  const lang = getLanguage();
   const services = await prisma?.service.findMany({
     orderBy: {
       createdAt: "desc",
     },
     where: {
       active: true,
+      arabic: lang.lang == "ar",
     },
   });
   const reviews = await prisma?.review.findMany();
