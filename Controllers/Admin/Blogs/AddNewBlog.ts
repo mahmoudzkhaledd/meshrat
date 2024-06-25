@@ -25,6 +25,7 @@ export const addNewBlog = async (
         : {
             title: "",
             content: "",
+            arabic: false,
           };
 
     const blog = await prisma.blog.create({
