@@ -14,6 +14,12 @@ export const servicesCols: ColumnDef<Service>[] = [
     enableHiding: false,
   },
   {
+    header: "Language",
+    cell: (row) => {
+      return <>{row.row.original.arabic ? "Arabic" : "English"}</>;
+    },
+  },
+  {
     header: "Price",
     cell: (row) => {
       return <>{row.row.original.price} EGP</>;
