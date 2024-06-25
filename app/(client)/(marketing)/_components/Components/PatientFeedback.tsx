@@ -72,6 +72,9 @@ export default function PatientFeedback({ reviews }: { reviews: Review[] }) {
     cols[i].push(r);
     i++;
   }
+  if (reviews.length == 0) {
+    return <></>
+  }
   return (
     <section className="pt-24 md:pt-32" id="reviews">
       <h3 className="mb-10 text-center text-3xl font-bold md:mb-20">
