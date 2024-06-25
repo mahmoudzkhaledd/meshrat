@@ -110,16 +110,18 @@ export default async function ServicePage({
                   </p>
                 </div>
               )}
-              <div className="space-y-1">
-                <h3 className="text-lg font-bold">{t("category")}</h3>
-                <p className="text-gray-500 dark:text-gray-400">
-                  {service.category}
-                </p>
-              </div>
+              {service.category != "" && (
+                <div className="space-y-1">
+                  <h3 className="text-lg font-bold">{t("category")}</h3>
+                  <p className="text-gray-500 dark:text-gray-400">
+                    {service.category}
+                  </p>
+                </div>
+              )}
             </div>
-            <div className="flex gap-4 items-center">
-              <Link  className="w-fit" href={"/contact"}>
-                <Button >{t("contactUs")}</Button>
+            <div className="flex items-center gap-4">
+              <Link className="w-fit" href={"/contact"}>
+                <Button>{t("contactUs")}</Button>
               </Link>
               <WhatsAppContact />
             </div>
