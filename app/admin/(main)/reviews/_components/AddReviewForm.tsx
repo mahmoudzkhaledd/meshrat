@@ -1,11 +1,13 @@
 "use client";
 import { addEditReview } from "@/Controllers/Admin/Info/AddReview";
+import { deleteReview } from "@/Controllers/Admin/Info/DeleteReview";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { reviewSchema } from "@/types/WebsiteInfo";
 import { Review } from "@prisma/client";
+import { Trash } from "lucide-react";
 
 import React, { useTransition } from "react";
 import toast from "react-hot-toast";
@@ -53,7 +55,16 @@ function CustomInput({
 }
 export default function AddReviewForm({ review }: { review?: Review }) {
   const [loading, startTrans] = useTransition();
-
+  const handelDelete = () => {
+    if (!window.confirm("Are you sure to delete the review?") || review == null)
+      return;
+    startTrans(async () => {
+      const res = await deleteReview(review?.id);
+      if (res?.error) {
+        toast.error(res.error);
+      }
+    });
+  };
   const handelFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const obj = Object.fromEntries(new FormData(e.currentTarget).entries());
@@ -81,9 +92,23 @@ export default function AddReviewForm({ review }: { review?: Review }) {
         <h2 className="text-lg font-bold">
           {review == null ? "Add" : "Edit"} Review
         </h2>
-        <Button type="submit" size={"sm"} loading={loading} disabled={loading}>
-          {review == null ? "Add" : "Save Changes"}
-        </Button>
+        <div className="flex items-center gap-4">
+          <Button type="submit" size={"sm"} disabled={loading}>
+            {review == null ? "Add" : "Save Changes"}
+          </Button>
+          {review != null && (
+            <Button
+              disabled={loading}
+              type="button"
+              size={"icon"}
+              onClick={handelDelete}
+              className="rounded-full"
+              variant={"outline"}
+            >
+              <Trash className="w-5" />
+            </Button>
+          )}
+        </div>
       </div>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <CustomInput
