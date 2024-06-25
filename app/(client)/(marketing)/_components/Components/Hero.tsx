@@ -5,7 +5,14 @@ import { getLanguage } from "@/Controllers/language/languageUtils";
 import { cn } from "@/lib/utils";
 import WhatsAppContact from "@/components/GeneralComponents/WhatsAppContact";
 import { Button } from "@/components/ui/button";
-import { Clock, Coins, LucideIcon, MapPin, Siren } from "lucide-react";
+import {
+  CircleDollarSign,
+  Clock,
+  Coins,
+  LucideIcon,
+  MapPin,
+  Siren,
+} from "lucide-react";
 type props = { icon: LucideIcon; wordKey: string };
 const items: props[] = [
   {
@@ -14,7 +21,7 @@ const items: props[] = [
   },
   {
     wordKey: "price",
-    icon: Coins,
+    icon: CircleDollarSign,
   },
   {
     wordKey: "location",
@@ -34,8 +41,8 @@ const CustomCard = ({
   text: string;
 }) => {
   return (
-    <div className="flex flex-col items-center justify-center w-xl rounded-3xl bg-[#ffffffd1] p-6 shadow-xl md:px-2 lg:w-1/5">
-      <TopIcon size={35} className="mb-5"/>
+    <div className="w-xl flex flex-col items-center justify-center rounded-3xl bg-[#ffffffd1] p-6 shadow-xl md:px-4 lg:w-1/5">
+      <TopIcon size={35} className="mb-5" />
       <h3 className="mb-2 text-xl font-bold">{text}</h3>
     </div>
   );
