@@ -174,5 +174,5 @@ export function slugify(text: string) {
   return text
     .toLowerCase()
     .replace(/ /g, "-")
-    .replace(/[^\w-]+/g, "");
+    .replace(/[^\w\u0600-\u06FF-]+/g, "");
 }

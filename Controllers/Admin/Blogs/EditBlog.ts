@@ -32,6 +32,7 @@ export const editBlog = async (
     slug =
         slugify(model.title) +
         `-${nanoid(10).replaceAll("-", "")}`;
+
     const blog = await prisma.blog.update({
       where: {
         id: data.id,

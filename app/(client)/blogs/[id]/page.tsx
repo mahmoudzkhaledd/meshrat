@@ -13,7 +13,7 @@ const checkAuth = cache(async () => {
 });
 const getPostById = cache(async (id: string): Promise<Blog | null> => {
   const session = await checkAuth();
-
+  id = decodeURIComponent(id);
   const blog = await prisma.blog.findUnique({
     where: {
       slug: id,
@@ -47,6 +47,7 @@ export async function generateMetadata({
 }
 
 export default async function BlogPage({ params }: { params: { id: string } }) {
+  
   const blog = await getPostById(params.id);
   if (blog == null) return notFound();
   const session = await checkAuth();
