@@ -1,5 +1,5 @@
 "use server";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import createMiddleware from "next-intl/middleware";
 
 import {
@@ -12,6 +12,7 @@ import {
 import { isUrlMatching } from "./lib/utils";
 
 import { authXAdmin } from "./authXAdmin";
+
 const handelApiRoutes = (req: NextRequest) => {
   const pathname = req.nextUrl.pathname;
   if (!pathname.startsWith("/api/server")) return null;
@@ -24,6 +25,8 @@ const handelApiRoutes = (req: NextRequest) => {
 };
 const handelAdminRoutes = async (req: NextRequest) => {
   const user = await authXAdmin();
+  const requestHeaders = new Headers(req.headers);
+  requestHeaders.set("admin", "true");
 
   const isLoggedin = user?.user != null;
   const route = req.nextUrl;
@@ -33,28 +36,26 @@ const handelAdminRoutes = async (req: NextRequest) => {
     if (isLoggedin) {
       return Response.redirect(new URL("/admin", route));
     }
-    return null;
+    return NextResponse.next({
+      headers: requestHeaders,
+    });
   }
   if (!isLoggedin) {
     return Response.redirect(new URL("/", route));
   }
-  return null;
+  return NextResponse.next({
+    headers: requestHeaders,
+  });
 };
 
 const middleware = async (req: NextRequest) => {
- 
   if (req.nextUrl.pathname.startsWith("/api")) return handelApiRoutes(req);
   if (req.nextUrl.pathname.startsWith("/admin")) return handelAdminRoutes(req);
 
-  
   return null;
 };
 
 export default middleware;
 export const config = {
-  matcher: [
-    "/((?!.+\\.[\\w]+$|_next).*)",
-    "/",
-    "/(api|trpc)(.*)",
-  ],
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 };

@@ -13,5 +13,7 @@ export const useLanguage = (): { lang: "ar" | "en"; notLang: "ar" | "en" } => {
 };
 
 export const setLanguage = (lang: "ar" | "en") => {
-    document.cookie = `NEXT_LOCALE=${lang};path=/;`;
+  var date = new Date();
+  date.setFullYear(date.getFullYear() + 1);
+  document.cookie = `NEXT_LOCALE=${lang};expires=${date.toUTCString()};path=/;`;
 };

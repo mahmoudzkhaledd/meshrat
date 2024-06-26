@@ -4,6 +4,7 @@ import PatientFeedback from "./_components/Components/PatientFeedback";
 import { prisma } from "@/lib/db";
 import { cookies } from "next/headers";
 import { getLanguage } from "@/Controllers/language/languageUtils";
+import FAQsSection from "./_components/Components/FAQsSection";
 
 export default async function LandingPage({}) {
   const lang = getLanguage();
@@ -17,6 +18,12 @@ export default async function LandingPage({}) {
     },
   });
   const reviews = await prisma?.review.findMany();
+  const faqs = await prisma.fAQ.findMany({
+    where: {
+      arabic: lang.lang == "ar",
+    },
+  });
+
   const cook = cookies();
   return (
     <div className="app min-h-screen min-w-[280px] bg-background text-[#1d4d85]">
@@ -25,6 +32,7 @@ export default async function LandingPage({}) {
         <ServicesSection services={services} />
         {/* <SpecialistSection /> */}
         <PatientFeedback reviews={JSON.parse(JSON.stringify(reviews))} />
+        <FAQsSection faqs={faqs} />
       </div>
     </div>
   );

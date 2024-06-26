@@ -39,7 +39,7 @@ export default function MainInfoPage() {
         />
         <CustomCard link="/admin/reviews" text={"Reviews"} TopIcon={Star} />
         <CustomCard
-          link="/admin/contact-info"
+          link="/admin/faq"
           text={"FAQs"}
           TopIcon={CircleHelp}
         />

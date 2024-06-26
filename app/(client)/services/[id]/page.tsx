@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import WhatsAppContact from "@/components/GeneralComponents/WhatsAppContact";
+import DynamicTitle from "./_components/DynamicTitle";
 
 const checkAuth = cache(async () => {
   const session = await authXAdmin();
@@ -24,7 +25,6 @@ const getServiceById = cache(async (id: string): Promise<Service | null> => {
   const service = await prisma.service.findUnique({
     where: {
       id: id,
-
     },
   });
   if (session?.user.id && session.user.type == "admin") {
@@ -67,6 +67,7 @@ export default async function ServicePage({
     await prisma.service.update({
       where: {
         id: params.id,
+        
       },
       data: {
         visits: {
@@ -78,6 +79,7 @@ export default async function ServicePage({
   const t = await getTranslations("servicesPage");
   return (
     <div>
+      {/* <DynamicTitle title={service.name}/> */}
       {!service.active && (
         <div className="mb-4 flex w-full gap-2 rounded-md bg-red-500 px-5 py-3 text-white">
           <Info className="w-4 min-w-4" /> {t("notFound")}

@@ -83,3 +83,11 @@ model Review {
   review     String
   createdAt  DateTime @default(now())
 }
+
+model FAQ {
+  id        Int      @id @default(autoincrement())
+  arabic    Boolean  @default(false)
+  question  String
+  answer    String
+  createdAt DateTime @default(now())
+}

@@ -7,8 +7,9 @@ import { Toaster } from "react-hot-toast";
 import { NextIntlClientProvider } from "next-intl";
 import { siteConfig } from "@/constants/site";
 
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { getLocale, getMessages } from "next-intl/server";
+import { getLanguage } from "@/Controllers/language/languageUtils";
 
 const inter = Inter({ subsets: ["latin"] });
 const almarai = Almarai({
@@ -49,18 +50,20 @@ export default async function RootLayout({
   params: { locale: string };
   children: React.ReactNode;
 }>) {
-  const locale = await getLocale();
   const messages = await getMessages();
-
+  const locale = getLanguage();
+  const isAdmin = headers().get("admin") == "true";
+  const lang = isAdmin ? "en" : locale.lang;
   return (
-    <html  suppressHydrationWarning>
-      <body className={locale == "ar" ? almarai.className : inter.className}>
+    <html lang={lang} suppressHydrationWarning>
+      <body
+        className={lang == "ar" ? almarai.className : inter.className}
+      >
         <NextIntlClientProvider messages={messages}>
           <AuthXProvider session={null}>
             <TooltipProvider delayDuration={30}>
               <Toaster />
               {children}
-              
             </TooltipProvider>
           </AuthXProvider>
         </NextIntlClientProvider>
