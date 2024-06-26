@@ -7,6 +7,7 @@ import { convert } from "html-to-text";
 import { cache } from "react";
 import { Blog } from "@prisma/client";
 import { Info } from "lucide-react";
+import { cn } from "@/lib/utils";
 const checkAuth = cache(async () => {
   const session = await authXAdmin();
   return session;
@@ -47,7 +48,6 @@ export async function generateMetadata({
 }
 
 export default async function BlogPage({ params }: { params: { id: string } }) {
-  
   const blog = await getPostById(params.id);
   if (blog == null) return notFound();
   const session = await checkAuth();
@@ -63,8 +63,14 @@ export default async function BlogPage({ params }: { params: { id: string } }) {
       },
     });
   }
+  const isArabic = blog.arabic;
   return (
-    <div className="mx-auto max-w-[1100px]">
+    <div
+      className={cn("mx-auto max-w-[1100px]", {
+        "arabic-text": isArabic,
+        "english-text": !isArabic,
+      })}
+    >
       {!blog.published && (
         <div className="mb-4 flex w-full gap-2 rounded-md bg-red-500 px-5 py-3 text-white">
           <Info className="w-4 min-w-4" /> This article is not published and you

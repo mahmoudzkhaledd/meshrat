@@ -5,7 +5,7 @@ import { Box, Info } from "lucide-react";
 import { cache } from "react";
 import { Service } from "@prisma/client";
 import { Metadata } from "next";
-import { convert } from "html-to-text";
+import { convert, htmlToText } from "html-to-text";
 import { authXAdmin } from "@/authXAdmin";
 
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,7 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import WhatsAppContact from "@/components/GeneralComponents/WhatsAppContact";
 import DynamicTitle from "./_components/DynamicTitle";
+import { getTextLanguage } from "@/lib/utils";
 
 const checkAuth = cache(async () => {
   const session = await authXAdmin();
@@ -67,7 +68,6 @@ export default async function ServicePage({
     await prisma.service.update({
       where: {
         id: params.id,
-        
       },
       data: {
         visits: {
@@ -77,15 +77,16 @@ export default async function ServicePage({
     });
   }
   const t = await getTranslations("servicesPage");
+  const arabic = service.arabic;
+
   return (
-    <div>
-      {/* <DynamicTitle title={service.name}/> */}
+    <div className={arabic ? "arabic-text" : "english-text"}>
       {!service.active && (
         <div className="mb-4 flex w-full gap-2 rounded-md bg-red-500 px-5 py-3 text-white">
           <Info className="w-4 min-w-4" /> {t("notFound")}
         </div>
       )}
-      <section className="w-full pt-10">
+      <section className="w-full pt-10  text-inherit">
         <div className="grid gap-10 md:grid-cols-2">
           <img
             src={
@@ -97,7 +98,7 @@ export default async function ServicePage({
           />
           <div className="flex w-full flex-col space-y-4">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold capitalize tracking-tighter lg:text-3xl">
+              <h1 className="text-3xl  font-bold capitalize tracking-tighter lg:text-3xl">
                 {service.name}
               </h1>
               <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl">
@@ -115,7 +116,7 @@ export default async function ServicePage({
               )}
               {service.category != "" && (
                 <div className="space-y-1">
-                  <h3 className="text-lg font-bold">{t("category")}</h3>
+                  <h3 className={"text-lg font-bold"}>{t("category")}</h3>
                   <p className="text-gray-500 dark:text-gray-400">
                     {service.category}
                   </p>

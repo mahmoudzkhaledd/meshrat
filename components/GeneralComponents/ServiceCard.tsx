@@ -3,10 +3,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Service } from "@prisma/client";
 import { franc } from "franc";
-import { cn } from "@/lib/utils";
+import { cn, getTextLanguage } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 export default function ServiceCard({ service }: { service: Service }) {
-  const lang = franc(service.subDescription ?? "");
+  const lang = getTextLanguage(service.subDescription ?? "");
   const t = useTranslations("homePage.servicesSection");
 
   return (
@@ -32,7 +32,7 @@ export default function ServiceCard({ service }: { service: Service }) {
         </Link>
         <p
           className={cn("mb-3 break-words font-normal text-gray-700", {
-            "arabic-article": lang == "arb",
+            "arabic-article": lang == "ar",
           })}
         >
           {service.subDescription == null || service.subDescription == ""
@@ -40,7 +40,7 @@ export default function ServiceCard({ service }: { service: Service }) {
             : service.subDescription}
         </p>
         <Link className="mt-auto w-full" href={`/services/${service.id}`}>
-          <Button className="w-full">{t('button')}</Button>
+          <Button className="w-full">{t("button")}</Button>
         </Link>
       </div>
     </div>

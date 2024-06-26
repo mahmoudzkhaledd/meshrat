@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { cn, formatArabicDate } from "@/lib/utils";
+import { cn, formatArabicDate, getTextLanguage } from "@/lib/utils";
 
 import { Review } from "@prisma/client";
 import { franc } from "franc";
@@ -15,7 +15,7 @@ const CustomReview = ({
   review: Review;
   className?: string;
 }) => {
-  const reviewLang = franc(review.review);
+  const reviewLang = getTextLanguage(review.review);
 
   const formatDateToArabic = (date: Date) => {
     return new Intl.DateTimeFormat("ar-EG", {
@@ -36,7 +36,7 @@ const CustomReview = ({
         </div>
       </CardHeader>
       <CardContent>
-        <p className={reviewLang == "arb" ? "arabic-text" : ""}>
+        <p className={reviewLang == "ar" ? "arabic-text" : ""}>
           {review.review}
         </p>
         <hr className="my-4" />
@@ -73,7 +73,7 @@ export default function PatientFeedback({ reviews }: { reviews: Review[] }) {
     i++;
   }
   if (reviews.length == 0) {
-    return <></>
+    return <></>;
   }
   return (
     <section className="pt-24 md:pt-32" id="reviews">

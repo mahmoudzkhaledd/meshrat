@@ -1,5 +1,6 @@
 import { AxiosError } from "axios";
 import { type ClassValue, clsx } from "clsx";
+import { franc } from "franc";
 import { twMerge } from "tailwind-merge";
 import { ZodError } from "zod";
 
@@ -135,7 +136,11 @@ export function objectToQueryString(filter?: any) {
     )
     .join("&");
 }
+export function getTextLanguage(str: string): "ar" | "en" {
+  const lang = franc(str);
 
+  return (lang == "eng") ? "en" : "ar";
+}
 export function extractAxiosError(ex: any): string | null {
   if (ex?.code == "P2002") {
     return `${ex.meta.target.join(".")} is already taken.`;
