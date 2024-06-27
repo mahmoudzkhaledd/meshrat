@@ -2,7 +2,7 @@ import { WebsiteInfo } from "@prisma/client";
 import { Facebook, Instagram, Phone } from "lucide-react";
 
 export const siteConfig = {
-  name: "Meshrat",
+  name: "Meshrat - Home Cupping Services Number 1 in Egypt",
   socialMedia: [
     {
       icon: Instagram,

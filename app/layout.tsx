@@ -7,8 +7,8 @@ import { Toaster } from "react-hot-toast";
 import { NextIntlClientProvider } from "next-intl";
 import { siteConfig } from "@/constants/site";
 
-import { cookies, headers } from "next/headers";
-import { getLocale, getMessages } from "next-intl/server";
+import { headers } from "next/headers";
+import { getMessages } from "next-intl/server";
 import { getLanguage } from "@/Controllers/language/languageUtils";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,7 +20,7 @@ const almarai = Almarai({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.URL ?? "http://localhost:3000"),
   openGraph: {
-    url: "https://insighta-snowy.vercel.app",
+    url: "https://meshrat.com",
     siteName: siteConfig.name,
     locale: "en_US",
     type: "website",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
   },
   description:
-    "At Meshrat Wellness, we are dedicated to enhancing your health and well-being through expert-driven holistic treatments. Founded by Dr. Osama Elngar, a renowned physiotherapist with extensive experience in muscle treatment and recovery, our clinic stands as a beacon of healing and relaxation.",
+    "Discover the professional cupping therapy with Home Cupping Services, Egypt's leading provider. We bring the ancient art of cupping directly to your home.",
 };
 
 export default async function RootLayout({
@@ -56,9 +56,7 @@ export default async function RootLayout({
   const lang = isAdmin ? "en" : locale.lang;
   return (
     <html lang={lang} suppressHydrationWarning>
-      <body
-        className={lang == "ar" ? almarai.className : inter.className}
-      >
+      <body className={lang == "ar" ? almarai.className : inter.className}>
         <NextIntlClientProvider messages={messages}>
           <AuthXProvider session={null}>
             <TooltipProvider delayDuration={30}>
