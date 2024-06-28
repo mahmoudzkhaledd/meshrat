@@ -47,7 +47,7 @@ const CustomCard = ({ icon, text }: { icon: string; text: string }) => {
   //   </div>
   // );
   return (
-    <Card className="flex h-[250px] md:h-[200px] w-full flex-col items-center justify-center overflow-hidden shadow-lg transition-all duration-500 hover:border-2 hover:border-blue-600">
+    <Card className="flex h-[250px] w-full flex-col items-center justify-center overflow-hidden shadow-lg transition-all duration-500 hover:border-2 hover:border-blue-600 md:h-[200px]">
       <CardHeader>
         <Image src={icon} alt="logo" width={60} height={60} />
       </CardHeader>
@@ -75,15 +75,17 @@ export default function HeroSection() {
             "text-right": lang.lang == "ar",
           })}
         >
-          <h1 className="text-4xl font-bold lg:text-7xl">{t("title")}</h1>
-          <p className="my-10 text-lg md:text-base lg:text-xl">
+          <h1 className="text-balance text-4xl font-bold lg:text-7xl">
+            {t("title")}
+          </h1>
+          <p className="my-10 text-balance text-lg md:text-base lg:text-xl">
             {t("subtitle")}
           </p>
-          <div className="flex items-center gap-2">
-            <Link href={"/contact"}>
-              <Button>{t("button")}</Button>
+          <div className="flex flex-col items-center gap-2 md:flex-row">
+            <Link className="w-full md:w-auto" href={"/contact"}>
+              <Button className="w-full md:w-auto">{t("button")}</Button>
             </Link>
-            <WhatsAppContact />
+            <WhatsAppContact className="w-full md:w-auto"/>
           </div>
         </div>
         <div className=" ">
