@@ -8,6 +8,9 @@ import { cache } from "react";
 import { Blog } from "@prisma/client";
 import { Info } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
+import { getWebsiteInfo } from "@/Controllers/Admin/Info/GetWebsiteInfo";
+import { getTranslations } from "next-intl/server";
 const checkAuth = cache(async () => {
   const session = await authXAdmin();
   return session;
@@ -49,6 +52,8 @@ export async function generateMetadata({
 
 export default async function BlogPage({ params }: { params: { id: string } }) {
   const blog = await getPostById(params.id);
+  const info = await getWebsiteInfo();
+  const t = await getTranslations("general");
   if (blog == null) return notFound();
   const session = await checkAuth();
   if (session?.user.id == null || session?.user.type != "admin") {
@@ -88,6 +93,11 @@ export default async function BlogPage({ params }: { params: { id: string } }) {
       <div className="prose prose-gray mt-5 max-w-full dark:prose-invert">
         <article className="pb-20">
           <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+          <div className="flex items-center">
+            <a href={info.whatsapp ?? ""} target="_blank" className="">
+              {t('whatsappContact')}
+            </a>
+          </div>
         </article>
       </div>
     </div>
