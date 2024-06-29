@@ -18,7 +18,7 @@ export default function BlogComponent({
     >
       <img
         src={post.bannerImage ?? ""}
-        alt={"Banner"}
+        alt={"Blog Banner Image"}
         width={600}
         height={400}
         className="mx-auto max-w-[300px] rounded-lg object-cover lg:m-5 lg:mx-0 lg:max-w-[200px]"

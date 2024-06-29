@@ -93,7 +93,7 @@ export default async function ServicePage({
               service.thumbnailImage ??
               "https://www.lumahealth.com/wp-content/uploads/2023/09/Chiang-Mai-hospitals.jpg"
             }
-            alt="Service Banner"
+            alt="Service Banner Image"
             className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full"
           />
           <div className="flex w-full flex-col space-y-4">

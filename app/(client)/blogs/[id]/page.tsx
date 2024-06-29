@@ -89,7 +89,7 @@ export default async function BlogPage({ params }: { params: { id: string } }) {
       {blog.bannerImage && (
         <img
           src={blog.bannerImage}
-          alt="Banner Image"
+          alt="Blog Banner Image"
           className="mx-auto aspect-video w-full rounded-lg object-cover object-center"
         />
       )}

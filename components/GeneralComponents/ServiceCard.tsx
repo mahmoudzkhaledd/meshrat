@@ -22,7 +22,7 @@ export default function ServiceCard({ service }: { service: Service }) {
           service.thumbnailImage ??
           "https://www.lumahealth.com/wp-content/uploads/2023/09/Chiang-Mai-hospitals.jpg"
         }
-        alt=""
+        alt="Service Banner Image"
       />
       <div className="flex h-full flex-col p-5">
         <Link href={`/services/${service.id}`}>

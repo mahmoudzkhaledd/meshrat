@@ -43,7 +43,7 @@ const CustomCard = ({ icon, text }: { icon: string; text: string }) => {
   return (
     <Card className="flex h-[250px] w-full flex-col items-center justify-center overflow-hidden shadow-lg transition-all hover:border-2 hover:border-blue-600 md:h-[200px]">
       <CardHeader>
-        <Image src={icon} alt="logo" width={60} height={60} />
+        <Image src={icon} alt="logo of the website" width={60} height={60} />
       </CardHeader>
       <CardContent className="text-balance text-center text-xl font-bold">
         {text}
@@ -77,7 +77,7 @@ export default function HeroSection() {
             height={250}
             className="fade max-w-[250px]"
             src="/images/logo.png"
-            alt="hero"
+            alt="main logo of the website"
           />
         </div>
       </div>

@@ -75,7 +75,7 @@ export default function AdvantagesSection() {
             <img
               className={"m-auto"}
               src="https://soundeals.com/assets/images/landing/projects_large.png"
-              alt="Logo"
+              alt="projects list image"
             />
           </div>
         </div>
@@ -86,7 +86,7 @@ export default function AdvantagesSection() {
             <img
               className="m-auto"
               src="https://soundeals.com/assets/images/landing/hero.png"
-              alt="Logo"
+              alt="many people asking for service"
             />
           </div>
           <div>
@@ -110,7 +110,7 @@ export default function AdvantagesSection() {
             <img
               className="m-auto"
               src="https://soundeals.com/assets/images/landing/management.png"
-              alt="Logo"
+              alt="management of the project"
             />
           </div>
           <div>

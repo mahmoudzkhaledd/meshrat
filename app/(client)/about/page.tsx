@@ -13,7 +13,7 @@ export default function page() {
             src="/images/logo.png"
             width={600}
             height={400}
-            alt="About Us"
+            alt="main logo of the website"
             className="h-auto w-full max-w-[400px] rounded-lg object-cover lg:max-w-full"
           />
         </div>
@@ -62,7 +62,7 @@ export default function page() {
             src="/images/logo.png"
             width={600}
             height={400}
-            alt="About Us"
+            alt="main logo of the website"
             className="h-auto w-full rounded-lg object-cover"
           />
         </div>

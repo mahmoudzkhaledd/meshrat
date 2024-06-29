@@ -44,7 +44,7 @@ const CustomReview = ({
           <Image
             width={50}
             height={50}
-            alt="Person"
+            alt="rating yellow star"
             src={"/images/rating.png"}
           />
           <div>
