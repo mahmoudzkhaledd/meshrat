@@ -73,11 +73,13 @@ export default function HeroSection() {
             <Link className="w-full md:w-auto" href={"/contact"}>
               <Button className="w-full md:w-auto">{t("button")}</Button>
             </Link>
-            <WhatsAppContact className="w-full md:w-auto"/>
+            <WhatsAppContact className="w-full md:w-auto" />
           </div>
         </div>
         <div className=" ">
-          <img
+          <Image
+            width={250}
+            height={250}
             className="fade max-w-[250px]"
             src="/images/logo.png"
             alt="hero"
