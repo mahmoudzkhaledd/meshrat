@@ -85,7 +85,7 @@ export default async function BlogPage({ params }: { params: { id: string } }) {
           entered by admin mode.
         </div>
       )}
-      <h1 className="mb-6 text-xl font-semibold lg:text-4xl">{blog.title}</h1>
+      <h2 className="mb-6 text-xl font-semibold lg:text-4xl">{blog.title}</h2>
       {blog.bannerImage && (
         <img
           src={blog.bannerImage}

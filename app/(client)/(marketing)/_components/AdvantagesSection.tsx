@@ -29,7 +29,7 @@ function CustomAdvSection({
 }) {
   return (
     <div className="hover-slide flex h-full w-full flex-col items-center justify-center rounded-lg bg-muted px-4 py-10 text-center lg:py-20">
-      <h1 className="mb-2 text-5xl font-bold">{number}</h1>
+      <h2 className="mb-2 text-5xl font-bold">{number}</h2>
       <span className="mb-4 text-balance text-2xl font-semibold">{title}</span>
       <p className="text-balance text-lg">{subTitle}</p>
     </div>
@@ -42,7 +42,7 @@ export default function AdvantagesSection() {
 
   return (
     <div className="mt-16 flex flex-col items-center justify-center">
-      <h1 className="mb-5 text-3xl font-semibold">{t("title")}</h1>
+      <h2 className="mb-5 text-3xl font-semibold">{t("title")}</h2>
       <div className="grid w-full grid-cols-1 justify-center gap-5 lg:grid-cols-3">
         {items.map((e, idx) => (
           <CustomAdvSection

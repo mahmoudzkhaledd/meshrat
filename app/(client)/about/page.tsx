@@ -18,9 +18,9 @@ export default function page() {
           />
         </div>
         <div>
-          <h1 className="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
             About Us
-          </h1>
+          </h2>
           <p className="mb-8 text-gray-500 dark:text-gray-400">
             At Meshrat Wellness, we are dedicated to enhancing your health and
             well-being through expert-driven holistic treatments. Founded by Dr.

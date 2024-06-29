@@ -98,9 +98,9 @@ export default async function ServicePage({
           />
           <div className="flex w-full flex-col space-y-4">
             <div className="space-y-2">
-              <h1 className="text-3xl  font-bold capitalize tracking-tighter lg:text-3xl">
+              <h2 className="text-3xl  font-bold capitalize tracking-tighter lg:text-3xl">
                 {service.name}
-              </h1>
+              </h2>
               <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl">
                 {service.subDescription}
               </p>
