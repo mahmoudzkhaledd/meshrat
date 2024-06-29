@@ -22,6 +22,38 @@
     },
     "patientFeedback": {
       "title": "Testimonials & Reviews"
+    },
+    "advSection": {
+      "title": "Why us?",
+      "expertTitle": "Expert Therapists",
+      "expertDesc": "Highly trained and certified professionals delivering exceptional care tailored to your needs.",
+      "scheduling": "Convenient Scheduling",
+      "schedulingDesc": "Flexible appointments to fit your busy life, ensuring timely therapy.",
+      "comfort": "Home Comfort",
+      "comfortDesc": "Receive quality therapy in the comfort of your home, creating a safe and relaxed environment.",
+      "contact": "Contact us now",
+      "care": "Personalized Care at Your Doorstep",
+      "careDesc": "We bring professional therapy services to the comfort of your home, allowing you to receive the care you need without the hassle of travel. Our dedicated team of therapists tailors each session to your individual needs, ensuring a personalized approach to your well-being.",
+      "ul": [
+        "Experienced Practitioners",
+        "Customized Treatment Plans",
+        "Comfort of Your Home",
+        "Traditional and Modern Techniques",
+        "Promotes Healing and Relaxation"
+      ],
+      "ul2Title": "Home Cupping Services",
+
+      "ul2": [
+        "Certified Professionals",
+        "Safe and Hygienic Procedures",
+        "Personalized Cupping Sessions",
+        "Effective Pain Relief",
+        "Boosts Circulation and Immunity"
+      ]
+    },
+    "aboutUs": {
+      "title": "About Meshrat",
+      "content": "Meshrat is Egypt's leading provider of at-home cupping services, known for its top-tier efficiency and competitive pricing for over three years. The center offers a range of services, including therapeutic cupping, at-home physical therapy, and recovery sessions. Meshrat is dedicated to delivering professional and convenient healthcare services at home, with 24/7 availability throughout Egypt."
     }
   },
   "blogsPage": {

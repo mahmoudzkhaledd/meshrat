@@ -25,7 +25,7 @@ const CustomReview = ({
     }).format(date);
   };
   return (
-    <Card dir="rtl" className={cn("h-fit", className)}>
+    <Card dir="rtl" className={cn("h-fit transition-all hover:border-blue-500 hover:border-[3px] ", className)}>
       <CardHeader className="flex flex-row items-center justify-between">
         <p className={cn("arabic-text text-lg font-semibold")}>
           {review.title}
@@ -77,7 +77,7 @@ export default function PatientFeedback({ reviews }: { reviews: Review[] }) {
   }
   return (
     <section className="pt-24 md:pt-32" id="reviews">
-      <h3 className="mb-10 text-center text-3xl font-bold md:mb-20">
+      <h3 className="mb-4 text-center text-3xl font-bold md:mb-10">
         {t("title")}
       </h3>
       <div className="grid w-fit grid-cols-1 gap-4 lg:grid-cols-3">

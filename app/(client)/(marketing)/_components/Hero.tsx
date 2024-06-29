@@ -40,14 +40,8 @@ const items: props[] = [
 ];
 
 const CustomCard = ({ icon, text }: { icon: string; text: string }) => {
-  // return (
-  //   <div className="flex h-full w-full flex-col flex-wrap items-center justify-center gap-4 rounded-xl bg-muted px-5 py-5 text-center shadow">
-  //     <TopIcon />
-  //     <p className="text-lg font-semibold">{text}</p>
-  //   </div>
-  // );
   return (
-    <Card className="flex h-[250px] w-full flex-col items-center justify-center overflow-hidden shadow-lg transition-all duration-500 hover:border-2 hover:border-blue-600 md:h-[200px]">
+    <Card className="flex h-[250px] w-full flex-col items-center justify-center overflow-hidden shadow-lg transition-all hover:border-2 hover:border-blue-600 md:h-[200px]">
       <CardHeader>
         <Image src={icon} alt="logo" width={60} height={60} />
       </CardHeader>
@@ -56,12 +50,6 @@ const CustomCard = ({ icon, text }: { icon: string; text: string }) => {
       </CardContent>
     </Card>
   );
-  // return (
-  //   <div className="w-xl flex flex-col items-center justify-center rounded-3xl bg-[#ffffffd1] p-6 shadow-xl md:px-4 lg:w-1/5">
-  //     <TopIcon size={35} className="mb-5" />
-  //     <h3 className="mb-2 text-xl font-bold">{text}</h3>
-  //   </div>
-  // );
 };
 
 export default function HeroSection() {
@@ -75,10 +63,10 @@ export default function HeroSection() {
             "text-right": lang.lang == "ar",
           })}
         >
-          <h1 className="text-balance text-4xl font-bold lg:text-7xl">
+          <h1 className="text-balance text-4xl font-bold lg:text-5xl">
             {t("title")}
           </h1>
-          <p className="my-10 text-balance text-lg md:text-base lg:text-xl">
+          <p className="my-5 text-balance text-lg md:text-base lg:text-xl">
             {t("subtitle")}
           </p>
           <div className="flex flex-col items-center gap-2 md:flex-row">

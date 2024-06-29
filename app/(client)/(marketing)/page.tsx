@@ -1,11 +1,12 @@
-import HeroSection from "./_components/Components/Hero";
-import ServicesSection from "./_components/Components/ServicesSection";
-import PatientFeedback from "./_components/Components/PatientFeedback";
+import HeroSection from "./_components/Hero";
+import ServicesSection from "./_components/ServicesSection";
+import PatientFeedback from "./_components/PatientFeedback";
 import { prisma } from "@/lib/db";
 import { cookies } from "next/headers";
 import { getLanguage } from "@/Controllers/language/languageUtils";
-import FAQsSection from "./_components/Components/FAQsSection";
-import MainLoading from "../loading";
+import FAQsSection from "./_components/FAQsSection";
+import AdvantagesSection from "./_components/AdvantagesSection";
+import AboutUs from "./_components/AboutUs";
 
 export default async function LandingPage({}) {
   const lang = getLanguage();
@@ -28,13 +29,14 @@ export default async function LandingPage({}) {
   const cook = cookies();
 
   return (
-    <div className="app min-h-screen min-w-[280px] bg-background text-[#1d4d85]">
-      <div className="m-auto max-w-[1250px] px-5 md:px-16">
+    <div className="min-h-screen bg-background text-[#1d4d85]">
+      <div className="m-auto max-w-[100rem] px-5 md:px-16">
         <HeroSection />
+        <AdvantagesSection />
         <ServicesSection services={services} />
-        {/* <SpecialistSection /> */}
         <PatientFeedback reviews={JSON.parse(JSON.stringify(reviews))} />
         <FAQsSection faqs={faqs} />
+        <AboutUs />
       </div>
     </div>
   );

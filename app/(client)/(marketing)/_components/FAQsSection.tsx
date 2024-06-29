@@ -13,7 +13,7 @@ export default function FAQsSection({ faqs }: { faqs: FAQ[] }) {
   if (faqs.length == 0) return <></>;
   return (
     <section className="pt-24 md:pt-32" id="reviews">
-      <h3 className="mb-10 text-center text-3xl font-bold md:mb-20">
+      <h3 className="mb-10 text-center text-3xl font-bold md:mb-10">
         {t("title")}
       </h3>
 
