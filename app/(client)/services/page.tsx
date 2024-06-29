@@ -1,4 +1,4 @@
-import CustomHeader from "@/components/GeneralComponents/CustomHeader";
+
 import NotFoundComponent from "@/components/GeneralComponents/NotFoundComponent";
 import ServiceCard from "@/components/GeneralComponents/ServiceCard";
 
