@@ -10,7 +10,7 @@ export default function ServiceCard({ service }: { service: Service }) {
   const t = useTranslations("homePage.servicesSection");
 
   return (
-    <div className="flex max-w-full flex-col rounded-lg border border-gray-200 bg-white shadow md:max-w-[350px]">
+    <div className="flex max-w-full flex-col rounded-lg border border-gray-200 bg-white shadow ">
       <img
         style={{
           maxWidth: "100%",

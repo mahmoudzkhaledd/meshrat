@@ -30,12 +30,14 @@ import { Service } from "@prisma/client";
 import { ArrowRight, Trash } from "lucide-react";
 import moment from "moment";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
 
 export default function AddServiceForm({ service }: { service?: Service }) {
+  const router = useRouter();
   const form = useForm<z.infer<typeof addServiceSchema>>({
     resolver: zodResolver(addServiceSchema),
     defaultValues: {
@@ -98,6 +100,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
               },
               service.id,
             );
+       
       if (res?.error != null) {
         toast.error(res.error);
       }
@@ -107,6 +110,7 @@ export default function AddServiceForm({ service }: { service?: Service }) {
             ? "Changes saved successfully"
             : `Service ${publish ? "published" : "un published"} successfully`,
         );
+        router.refresh();
       }
     });
   };

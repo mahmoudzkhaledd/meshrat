@@ -30,7 +30,7 @@ export default async function LandingPage({}) {
 
   return (
     <div className="min-h-screen bg-background text-[#1d4d85]">
-      <div className="m-auto max-w-[100rem] px-5 md:px-16">
+      <div className="m-auto w-full lg:max-w-[90rem] px-5 ">
         <HeroSection />
         <AdvantagesSection />
         <ServicesSection services={services} />

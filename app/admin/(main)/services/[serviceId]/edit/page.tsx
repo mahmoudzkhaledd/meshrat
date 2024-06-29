@@ -1,9 +1,12 @@
+"use server";
 import React from 'react'
 import { prisma } from '@/lib/db';
 import NotFoundComponent from '@/components/GeneralComponents/NotFoundComponent';
 import { Box } from 'lucide-react';
 import AddServiceForm from '../../add/_components/AddServiceForm';
+
 export default async function EditServicePage({ params }: { params: { serviceId: string; } }) {
+    
     const service = await prisma.service.findUnique({
         where: {
             id: params.serviceId,

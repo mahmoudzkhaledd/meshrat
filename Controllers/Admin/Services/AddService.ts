@@ -9,11 +9,11 @@ import { redirect } from "next/navigation";
 
 export const addNewService = async (
   service: any,
-): Promise<{ error?: string; success?: boolean } | null | undefined> => {
+): Promise<{ error?: string; success?: boolean }> => {
   const session = await authXAdmin();
   if (!session?.user.id || session.user.type != "admin") {
     redirect("/");
-    return;
+    return {};
   }
   service = customSanatize(service);
   try {
@@ -24,6 +24,7 @@ export const addNewService = async (
         ...schema,
       },
     });
+    redirect(`/admin/services/${res.id}/edit`);
     return {
       success: true,
     };
@@ -42,11 +43,11 @@ export const addNewService = async (
 export const editService = async (
   service: any,
   serviceId: string,
-): Promise<{ error?: string; success?: boolean } | null | undefined> => {
+): Promise<{ error?: string; success?: boolean }> => {
   const session = await authXAdmin();
   if (!session?.user.id || session.user.type != "admin") {
     redirect("/");
-    return;
+    return {};
   }
   service = customSanatize(service);
   try {
@@ -60,11 +61,14 @@ export const editService = async (
         ...schema,
       },
     });
-    revalidatePath(`/admin/services/${service.id}`);
+
+    // revalidatePath(`/admin/services/${res.id}/edit`);
+    console.log(res);
     return {
       success: true,
     };
   } catch (ex: any) {
+    console.log(ex);
     const msg = extractAxiosError(ex);
     if (msg != null) {
       return {
