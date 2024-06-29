@@ -19,7 +19,10 @@ export default async function BlogsPage({
   searchParams: { page: string };
 }) {
   const page = toInt(searchParams.page) ?? 0;
-  const lang = getLanguage()
+  const lang = getLanguage();
+
+
+  
   const blogs = await prisma.blog.findMany({
     where: {
       published: true,

@@ -11,6 +11,14 @@ export const siteConfig = {
       return "Meshrat - Home Cupping Services Number 1 in Egypt";
     }
   },
+  description: () => {
+    const lang = getLanguage().lang;
+    if (lang == "ar") {
+      return "اكتشف العلاج بالحجامة الاحترافي مع خدمات الحجامة المنزلية، الرائد في مصر. نحن نجلب فن الحجامة القديم مباشرة إلى منزلك.";
+    } else {
+      return  "Discover the professional cupping therapy with Home Cupping Services, Egypt's leading provider. We bring the ancient art of cupping directly to your home.";
+    }
+  },
   socialMedia: [
     {
       icon: Instagram,

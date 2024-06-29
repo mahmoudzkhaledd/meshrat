@@ -18,7 +18,7 @@ const almarai = Almarai({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const url = new URL(process.env.URL ?? "http://localhost:3000")
+  const url = new URL(process.env.URL ?? "http://localhost:3000");
   return {
     metadataBase: url,
     openGraph: {
@@ -41,8 +41,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
     },
-    description:
-      "Discover the professional cupping therapy with Home Cupping Services, Egypt's leading provider. We bring the ancient art of cupping directly to your home.",
+    description: siteConfig.description(),
   };
 }
 
