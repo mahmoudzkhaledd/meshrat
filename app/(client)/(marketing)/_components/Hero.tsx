@@ -69,12 +69,7 @@ export default function HeroSection() {
           <p className="my-5 text-balance text-lg md:text-base lg:text-xl">
             {t("subtitle")}
           </p>
-          <div className="flex flex-col items-center gap-2 md:flex-row">
-            <Link className="w-full md:w-auto" href={"/contact"}>
-              <Button className="w-full md:w-auto">{t("button")}</Button>
-            </Link>
-            <WhatsAppContact className="w-full md:w-auto" />
-          </div>
+          <WhatsAppContact className="w-full md:w-auto" />
         </div>
         <div className=" ">
           <Image

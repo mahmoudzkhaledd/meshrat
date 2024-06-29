@@ -123,12 +123,7 @@ export default async function ServicePage({
                 </div>
               )}
             </div>
-            <div className="flex flex-col items-center gap-2 md:flex-row">
-            <Link className="w-full md:w-auto" href={"/contact"}>
-              <Button className="w-full md:w-auto">{t("contactUs")}</Button>
-            </Link>
             <WhatsAppContact className="w-full md:w-auto"/>
-          </div>
           </div>
         </div>
       </section>

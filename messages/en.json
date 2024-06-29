@@ -87,7 +87,8 @@
     "notFound": "This service is not published and you entered by admin mode."
   },
   "general": {
-    "whatsappContact": "Connect through WhatsApp"
+    "whatsappContact": "Connect through WhatsApp",
+    "button": "Contact Us"
   },
   "faqs": {
     "title": "FAQs"

@@ -11,6 +11,9 @@ import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { getWebsiteInfo } from "@/Controllers/Admin/Info/GetWebsiteInfo";
 import { getTranslations } from "next-intl/server";
+import WhatsAppContact from "@/components/GeneralComponents/WhatsAppContact";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 const checkAuth = cache(async () => {
   const session = await authXAdmin();
   return session;
@@ -93,11 +96,7 @@ export default async function BlogPage({ params }: { params: { id: string } }) {
       <div className="prose prose-gray mt-5 max-w-full dark:prose-invert">
         <article className="pb-20">
           <div dangerouslySetInnerHTML={{ __html: blog.content }} />
-          <div className="flex items-center">
-            <a href={info.whatsapp ?? ""} target="_blank" className="">
-              {t('whatsappContact')}
-            </a>
-          </div>
+          <WhatsAppContact className="w-full md:w-auto no-underline" />
         </article>
       </div>
     </div>
