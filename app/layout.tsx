@@ -17,31 +17,34 @@ const almarai = Almarai({
   subsets: ["arabic"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(process.env.URL ?? "http://localhost:3000"),
-  openGraph: {
-    url: "https://meshrat.com",
-    siteName: siteConfig.name,
-    locale: "en_US",
-    type: "website",
-    images: [
-      {
-        url: "/images/opengraph-image.jpg",
-        width: 1200,
-        height: 600,
-      },
-    ],
-  },
-  title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
-  },
-  twitter: {
-    card: "summary_large_image",
-  },
-  description:
-    "Discover the professional cupping therapy with Home Cupping Services, Egypt's leading provider. We bring the ancient art of cupping directly to your home.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const url = new URL(process.env.URL ?? "http://localhost:3000")
+  return {
+    metadataBase: url,
+    openGraph: {
+      url: url,
+      siteName: siteConfig.name(),
+      locale: "en_US",
+      type: "website",
+      images: [
+        {
+          url: "/images/opengraph-image.jpg",
+          width: 1200,
+          height: 600,
+        },
+      ],
+    },
+    title: {
+      default: siteConfig.name(),
+      template: `%s | ${siteConfig.name()}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+    },
+    description:
+      "Discover the professional cupping therapy with Home Cupping Services, Egypt's leading provider. We bring the ancient art of cupping directly to your home.",
+  };
+}
 
 export default async function RootLayout({
   children,

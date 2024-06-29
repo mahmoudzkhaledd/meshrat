@@ -1,8 +1,16 @@
+import { getLanguage } from "@/Controllers/language/languageUtils";
 import { WebsiteInfo } from "@prisma/client";
 import { Facebook, Instagram, Phone } from "lucide-react";
 
 export const siteConfig = {
-  name: "Meshrat - Home Cupping Services Number 1 in Egypt",
+  name: (): string => {
+    const lang = getLanguage();
+    if (lang.lang == "ar") {
+      return "مشرط - خدمات الحجامة المنزلية رقم 1 في مصر";
+    } else {
+      return "Meshrat - Home Cupping Services Number 1 in Egypt";
+    }
+  },
   socialMedia: [
     {
       icon: Instagram,

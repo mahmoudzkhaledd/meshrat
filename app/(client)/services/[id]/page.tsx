@@ -43,7 +43,7 @@ export async function generateMetadata({
   const service = await getServiceById(params.id);
   return {
     title: service?.name ?? "Unknown service",
-    description: convert(service?.description ?? ""),
+    description: service?.subDescription ?? "",
     openGraph: {
       images: [
         {
