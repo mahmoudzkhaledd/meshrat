@@ -21,6 +21,26 @@ export async function generateMetadata(): Promise<Metadata> {
   const url = new URL(process.env.URL ?? "http://localhost:3000");
   return {
     metadataBase: url,
+    viewport: "width=device-width, initial-scale=1",
+    keywords: [
+      "Home physiotherapy",
+      "Physiotherapy",
+      "Meshrat",
+      "Manual therapy",
+      "Exercise therapy",
+      "Treatment plan",
+      "Patient orientation",
+      "Sociological support",
+      "العلاج الطبيعي المنزلي",
+      "العلاج الطبيعي",
+      "مشرط",
+      "العلاج اليدوي",
+      "العلاج بالتمارين",
+      "خطة العلاج",
+      "توجيه المريض",
+      "الدعم الاجتماعي",
+    ],
+
     openGraph: {
       url: url,
       siteName: siteConfig.name(),
