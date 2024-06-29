@@ -10,14 +10,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogs = await getAllBlogs({ lang: lang });
   const servicesPages = services.map((service) => {
     return {
-      url: `${url}/${service.id}`,
+      url: `${url}/services/${service.id}`,
       lastModified: service.updatedAt,
       priority: 0.97,
     };
   });
   const blogsPage = blogs.map((blog) => {
     return {
-      url: `${url}/${blog.slug}`,
+      url: `${url}/blogs/${blog.slug}`,
       lastModified: blog.updatedAt,
       priority: 0.7,
     };
