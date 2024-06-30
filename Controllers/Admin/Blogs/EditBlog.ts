@@ -28,10 +28,9 @@ export const editBlog = async (
     if (tmpBlog == null) throw new Error("Blog not found!");
     const model: z.infer<typeof editBlogSchema> = editBlogSchema.parse(data);
     let slug = tmpBlog.slug;
-  
-    slug =
-        slugify(model.title) +
-        `-${nanoid(10).replaceAll("-", "")}`;
+    if (tmpBlog.title != model.title) {
+      slug = slugify(model.title) + `-${nanoid(10).replaceAll("-", "")}`;
+    }
 
     const blog = await prisma.blog.update({
       where: {
