@@ -14,6 +14,7 @@ import { getTranslations } from "next-intl/server";
 import WhatsAppContact from "@/components/GeneralComponents/WhatsAppContact";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Head from "next/head";
 const checkAuth = cache(async () => {
   const session = await authXAdmin();
   return session;
@@ -72,6 +73,8 @@ export default async function BlogPage({ params }: { params: { id: string } }) {
     });
   }
   const isArabic = blog.arabic;
+  const url = process.env.URL ?? "";
+
   return (
     <div
       className={cn("mx-auto max-w-[1100px]", {
@@ -79,6 +82,13 @@ export default async function BlogPage({ params }: { params: { id: string } }) {
         "english-text": !isArabic,
       })}
     >
+      <Head>
+        <link
+          rel="canonical"
+          href={`${url}/blogs/${blog.slug}`}
+          key="canonical"
+        />
+      </Head>
       {!blog.published && (
         <div className="mb-4 flex w-full gap-2 rounded-md bg-red-500 px-5 py-3 text-white">
           <Info className="w-4 min-w-4" /> This article is not published and you
@@ -96,7 +106,7 @@ export default async function BlogPage({ params }: { params: { id: string } }) {
       <div className="prose prose-gray mt-5 max-w-full dark:prose-invert">
         <article className="pb-20">
           <div dangerouslySetInnerHTML={{ __html: blog.content }} />
-          <WhatsAppContact className="w-full md:w-auto no-underline" />
+          <WhatsAppContact className="w-full no-underline md:w-auto" />
         </article>
       </div>
     </div>

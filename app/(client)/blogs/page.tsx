@@ -4,10 +4,9 @@ import BlogComponent from "./_components/BlogComponent";
 import { toInt } from "@/lib/utils";
 import CustomPagination from "@/components/GeneralComponents/CustomPagination";
 import { Metadata } from "next";
-import { cookies } from "next/headers";
-import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { getLanguage } from "@/Controllers/language/languageUtils";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Blogs",
@@ -20,7 +19,6 @@ export default async function BlogsPage({
 }) {
   const page = toInt(searchParams.page) ?? 0;
   const lang = getLanguage();
-
 
   
   const blogs = await prisma.blog.findMany({
@@ -43,6 +41,9 @@ export default async function BlogsPage({
   const t = await getTranslations("blogsPage");
   return (
     <div className="w-full px-4">
+      <Head>
+        <link rel="canonical" href={`${process.env.URL}/blogs` ?? ""} key="canonical" />
+      </Head>
       {blogs.length == 0 ? (
         <div className="m-auto flex flex-col items-center justify-center px-4">
           <div className="max-w-md space-y-4 text-center">

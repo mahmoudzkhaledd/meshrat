@@ -4,6 +4,7 @@ import { contactUsItems } from "./_constants/items";
 import { getTranslations } from "next-intl/server";
 import { getWebsiteInfo } from "@/Controllers/Admin/Info/GetWebsiteInfo";
 import { Mail, MapPin, Phone } from "lucide-react";
+import Head from "next/head";
 export const metadata: Metadata = {
   title: "Contact Us",
 };
@@ -12,6 +13,9 @@ export default async function ContactUsPage({}) {
   const info = await getWebsiteInfo();
   return (
     <section className="bg-white pb-20 dark:bg-gray-900">
+      <Head>
+        <link rel="canonical" href={`${process.env.URL}/contact` ?? ""} key="canonical" />
+      </Head>
       <div>
         <p className="font-medium text-blue-500 dark:text-blue-400">
           {t("topTitle")}

@@ -8,6 +8,7 @@ import FAQsSection from "./_components/FAQsSection";
 import AdvantagesSection from "./_components/AdvantagesSection";
 import AboutUs from "./_components/AboutUs";
 import { getAllServices } from "@/Controllers/Client/GetAllServices";
+import Head from "next/head";
 
 export default async function LandingPage({}) {
   const lang = getLanguage();
@@ -23,6 +24,9 @@ export default async function LandingPage({}) {
 
   return (
     <div className="min-h-screen bg-background text-[#1d4d85]">
+      <Head>
+        <link rel="canonical" href={process.env.URL ?? ""} key="canonical" />
+      </Head>
       <div className="m-auto w-full px-5 lg:max-w-[90rem]">
         <HeroSection />
         <AdvantagesSection />

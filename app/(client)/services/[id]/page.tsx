@@ -14,6 +14,7 @@ import Link from "next/link";
 import WhatsAppContact from "@/components/GeneralComponents/WhatsAppContact";
 import DynamicTitle from "./_components/DynamicTitle";
 import { getTextLanguage } from "@/lib/utils";
+import Head from "next/head";
 
 const checkAuth = cache(async () => {
   const session = await authXAdmin();
@@ -78,15 +79,22 @@ export default async function ServicePage({
   }
   const t = await getTranslations("servicesPage");
   const arabic = service.arabic;
-
+  const url = process.env.URL ?? "";
   return (
     <div className={arabic ? "arabic-text" : "english-text"}>
+      <Head>
+        <link
+          rel="canonical"
+          href={`${url}/services/${service.id}`}
+          key="canonical"
+        />
+      </Head>
       {!service.active && (
         <div className="mb-4 flex w-full gap-2 rounded-md bg-red-500 px-5 py-3 text-white">
           <Info className="w-4 min-w-4" /> {t("notFound")}
         </div>
       )}
-      <section className="w-full pt-10  text-inherit">
+      <section className="w-full pt-10 text-inherit">
         <div className="grid gap-10 md:grid-cols-2">
           <img
             src={
@@ -98,7 +106,7 @@ export default async function ServicePage({
           />
           <div className="flex w-full flex-col space-y-4">
             <div className="space-y-2">
-              <h2 className="text-3xl  font-bold capitalize tracking-tighter lg:text-3xl">
+              <h2 className="text-3xl font-bold capitalize tracking-tighter lg:text-3xl">
                 {service.name}
               </h2>
               <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl">
@@ -123,7 +131,7 @@ export default async function ServicePage({
                 </div>
               )}
             </div>
-            <WhatsAppContact className="w-full md:w-auto"/>
+            <WhatsAppContact className="w-full md:w-auto" />
           </div>
         </div>
       </section>

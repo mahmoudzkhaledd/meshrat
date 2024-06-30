@@ -114,9 +114,11 @@ export default async function RootLayout({
   const locale = getLanguage();
   const isAdmin = headers().get("admin") == "true";
   const lang = isAdmin ? "en" : locale.lang;
+
   return (
     <html lang={lang} suppressHydrationWarning>
       <Head>
+        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
