@@ -30,6 +30,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
+      url: `${url}/images/logo.png`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
       url: `${url}/blogs`,
       lastModified:
         blogs.length == 0 ? new Date() : blogs[blogs.length - 1].updatedAt,
