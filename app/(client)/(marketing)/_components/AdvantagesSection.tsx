@@ -53,6 +53,54 @@ export default function AdvantagesSection() {
           />
         ))}
       </div>
+      
+      <div className="mt-7 grid w-full grid-cols-1 gap-5 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 rounded-xl bg-muted px-7 py-6 lg:grid-cols-2">
+          <div className="w-full">
+            <img
+              className="m-auto"
+              src="https://soundeals.com/assets/images/landing/hero.png"
+              alt="many people asking for service"
+            />
+          </div>
+          <div>
+            <Link
+              href={"/contact"}
+              className="mt-4 block rounded-xl bg-red-500 px-4 py-2 text-center transition-all hover:bg-main"
+            >
+              <span className="text-lg font-semibold text-white">
+                {t("contact")}
+              </span>
+            </Link>
+            <ul className="mt-4 list-disc px-3 space-y-4 text-lg">
+              {[...Array(3)].map((e, idx) => (
+                <li key={idx}>{t(`ul.${idx}`)}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 gap-4 rounded-xl bg-muted px-7 py-6 lg:grid-cols-2">
+          <div className="w-full">
+            <img
+              className="m-auto"
+              src="https://soundeals.com/assets/images/landing/management.png"
+              alt="management of the project"
+            />
+          </div>
+          <div>
+            <div className="mt-4 rounded-xl bg-red-500 px-4 py-2 text-center transition-all hover:bg-main">
+              <span className="text-lg font-semibold text-white">
+                {t("ul2Title")}
+              </span>
+            </div>
+            <ul className="mt-4 list-disc px-3 text-lg">
+              {[...Array(3)].map((e, idx) => (
+                <li key={idx}>{t(`ul2.${idx}`)}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
       <div className="mt-7 w-full">
         <div className="grid w-full grid-cols-1 justify-center rounded-lg bg-muted px-4 py-6 text-center lg:grid-cols-2">
           <div className="flex flex-col items-center justify-center">
@@ -77,53 +125,6 @@ export default function AdvantagesSection() {
               src="https://soundeals.com/assets/images/landing/projects_large.png"
               alt="projects list image"
             />
-          </div>
-        </div>
-      </div>
-      <div className="mt-7 grid w-full grid-cols-1 gap-5 lg:grid-cols-2">
-        <div className="grid grid-cols-1 gap-4 rounded-xl bg-muted px-7 py-6 lg:grid-cols-2">
-          <div className="w-full">
-            <img
-              className="m-auto"
-              src="https://soundeals.com/assets/images/landing/hero.png"
-              alt="many people asking for service"
-            />
-          </div>
-          <div>
-            <Link
-              href={"/contact"}
-              className="mt-4 block rounded-xl bg-red-500 px-4 py-2 text-center transition-all hover:bg-main"
-            >
-              <span className="text-lg font-semibold text-white">
-                {t("contact")}
-              </span>
-            </Link>
-            <ul className="mt-4 list-disc px-3 text-lg">
-              {[...Array(5)].map((e, idx) => (
-                <li key={idx}>{t(`ul.${idx}`)}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 gap-4 rounded-xl bg-muted px-7 py-6 lg:grid-cols-2">
-          <div className="w-full">
-            <img
-              className="m-auto"
-              src="https://soundeals.com/assets/images/landing/management.png"
-              alt="management of the project"
-            />
-          </div>
-          <div>
-            <div className="mt-4 rounded-xl bg-red-500 px-4 py-2 text-center transition-all hover:bg-main">
-              <span className="text-lg font-semibold text-white">
-                {t("ul2Title")}
-              </span>
-            </div>
-            <ul className="mt-4 list-disc px-3 text-lg">
-              {[...Array(5)].map((e, idx) => (
-                <li key={idx}>{t(`ul2.${idx}`)}</li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>

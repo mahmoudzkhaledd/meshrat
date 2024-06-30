@@ -10,6 +10,8 @@ import { siteConfig } from "@/constants/site";
 import { headers } from "next/headers";
 import { getMessages } from "next-intl/server";
 import { getLanguage } from "@/Controllers/language/languageUtils";
+import Head from "next/head";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 const almarai = Almarai({
@@ -78,6 +80,35 @@ export default async function RootLayout({
   const lang = isAdmin ? "en" : locale.lang;
   return (
     <html lang={lang} suppressHydrationWarning>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              url: "https://www.meshrat.com",
+              potentialAction: [
+                {
+                  "@type": "WebPage",
+                  url: "https://www.meshrat.com/#services",
+                  name: "خدماتنا",
+                },
+                {
+                  "@type": "Blog",
+                  url: "https://www.meshrat.com/blogs",
+                  name: "المقالات",
+                },
+                {
+                  "@type": "ContactPage",
+                  url: "https://www.meshrat.com/contact",
+                  name: "تواصل معنا",
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
       <body className={lang == "ar" ? almarai.className : inter.className}>
         <NextIntlClientProvider messages={messages}>
           <AuthXProvider session={null}>
