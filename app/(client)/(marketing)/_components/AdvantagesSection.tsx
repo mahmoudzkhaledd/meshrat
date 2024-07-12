@@ -59,7 +59,7 @@ export default function AdvantagesSection() {
           <div className="w-full">
             <img
               className="m-auto"
-              src="https://soundeals.com/assets/images/landing/hero.png"
+              src="./images/adv1.png"
               alt="many people asking for service"
             />
           </div>
@@ -82,8 +82,8 @@ export default function AdvantagesSection() {
         <div className="grid grid-cols-1 gap-4 rounded-xl bg-muted px-7 py-6 lg:grid-cols-2">
           <div className="w-full">
             <img
-              className="m-auto"
-              src="https://soundeals.com/assets/images/landing/management.png"
+              className="m-auto p-5 rounded-full aspect-square object-cover"
+              src="./images/adv2.jpg"
               alt="management of the project"
             />
           </div>
@@ -121,8 +121,8 @@ export default function AdvantagesSection() {
           </div>
           <div className="w-full">
             <img
-              className={"m-auto"}
-              src="https://soundeals.com/assets/images/landing/projects_large.png"
+              className={"m-auto max-w-[250px]"}
+              src="./images/adv3.png"
               alt="projects list image"
             />
           </div>
