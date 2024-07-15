@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Almarai } from "next/font/google";
+import {  Almarai,Montserrat } from "next/font/google";
 import "../styles/globals.css";
 import AuthXProvider from "@/authX/Provider/AuthXProvider";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,7 +13,7 @@ import { getLanguage } from "@/Controllers/language/languageUtils";
 import Head from "next/head";
 import Script from "next/script";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Montserrat({ subsets: ["latin"] });
 const almarai = Almarai({
   weight: ["300", "400", "700", "800"],
   subsets: ["arabic"],
