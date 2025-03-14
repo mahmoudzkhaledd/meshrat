@@ -11,12 +11,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { websiteInfoSchema } from "@/types/WebsiteInfo";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Review, WebsiteInfo } from "@prisma/client";
+import { Plus, X } from "lucide-react";
 
 import { useTransition } from "react";
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
 
@@ -34,7 +36,15 @@ export default function InfoForm({ info }: { info?: WebsiteInfo }) {
       whatsapp: info?.whatsapp ?? undefined,
       twitter: info?.twitter ?? undefined,
       email: info?.email ?? "",
+      seoKeyWords:
+        info?.seoKeyWords?.map((e) => ({
+          name: e,
+        })) ?? [],
     },
+  });
+  const { append, fields, remove } = useFieldArray({
+    control: form.control,
+    name: "seoKeyWords",
   });
   const handleSubmit = (e: any) => {
     startTrans(async () => {
@@ -49,7 +59,7 @@ export default function InfoForm({ info }: { info?: WebsiteInfo }) {
   };
   const Items = [];
   for (const item of Object.keys(websiteInfoSchema.shape)) {
-    if (item != "reviews")
+    if (item != "reviews" && item != "seoKeyWords")
       Items.push(
         <FormField
           key={item}
@@ -83,6 +93,48 @@ export default function InfoForm({ info }: { info?: WebsiteInfo }) {
           </Button>
         </div>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">{Items}</div>
+        <div className="mt-5 flex flex-col gap-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-bold">SEO Keywords</h2>
+            <Button
+              onClick={() => append({ name: "" })}
+              className=""
+              size={"icon"}
+              type="button"
+            >
+              <Plus className="w-5" />
+            </Button>
+          </div>
+          {fields.length == 0 && (
+            <p className="my-3 text-center">No keywords added </p>
+          )}
+          {fields.map((e, idx) => (
+            <div key={idx}>
+              <Label htmlFor={`seoKeyWords.${idx}.subTitle`}>Description</Label>
+              <div className="flex items-center gap-3">
+                <Input
+                  id={`seoKeyWords.${idx}.subTitle`}
+                  {...form.register(`seoKeyWords.${idx}.name`)}
+                  className="mt-1"
+                />
+                <Button
+                  type="button"
+                  onClick={() => remove(idx)}
+                  className=""
+                  variant={"destructive"}
+                  size={"icon"}
+                >
+                  <X className="w-5" />
+                </Button>
+              </div>
+              {form.formState.errors.seoKeyWords?.[idx]?.name && (
+                <p className="mt-1 text-sm text-red-500">
+                  {form.formState.errors.seoKeyWords?.[idx]?.name.message}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
       </form>
     </Form>
   );

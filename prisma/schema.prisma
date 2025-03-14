@@ -62,16 +62,16 @@ model Blog {
 }
 
 model WebsiteInfo {
-  id Int @id @default(autoincrement())
-
-  email     String
-  phone     String
-  location  String
-  linkedIn  String?
-  facebook  String?
-  twitter   String?
-  instagram String?
-  whatsapp  String?
+  id          Int      @id @default(autoincrement())
+  seoKeyWords String[]
+  email       String
+  phone       String
+  location    String
+  linkedIn    String?
+  facebook    String?
+  twitter     String?
+  instagram   String?
+  whatsapp    String?
 }
 
 model Review {

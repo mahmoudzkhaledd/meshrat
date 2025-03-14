@@ -23,8 +23,7 @@ export const saveWebsiteInfo = async (
   try {
     let model = websiteInfoSchema.parse(data);
     const tmp = await prisma.websiteInfo.findUnique({ where: { id: 1 } });
-
-    
+    const seoKeyWords = model.seoKeyWords?.map((e) => e.name) ?? [];
     if (tmp == null) {
       await prisma.websiteInfo.create({
         data: {
@@ -34,12 +33,13 @@ export const saveWebsiteInfo = async (
           linkedIn: model.linkedIn == "" ? null : model.linkedIn,
           twitter: model.twitter == "" ? null : model.twitter,
           whatsapp: model.whatsapp == "" ? null : model.whatsapp,
+          seoKeyWords,
         },
       });
     } else {
       await prisma.websiteInfo.update({
         where: { id: 1 },
-        data: model,
+        data: { ...model, seoKeyWords },
       });
     }
     return {

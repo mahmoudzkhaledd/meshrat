@@ -6,7 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "react-hot-toast";
 import { NextIntlClientProvider } from "next-intl";
 import { siteConfig } from "@/constants/site";
-
+import { prisma } from "@/lib/db";
 import { headers } from "next/headers";
 import { getMessages } from "next-intl/server";
 import { getLanguage } from "@/Controllers/language/languageUtils";
@@ -21,63 +21,12 @@ const almarai = Almarai({
 
 export async function generateMetadata(): Promise<Metadata> {
   const url = new URL(process.env.URL ?? "http://localhost:3000");
+  const keywords = await prisma.websiteInfo.findFirst();
+
   return {
     metadataBase: url,
     // viewport: "width=device-width, initial-scale=1",
-    keywords: [
-      "Home physiotherapy",
-      "Physiotherapy",
-      "Meshrat",
-      "Manual therapy",
-      "Exercise therapy",
-      "Treatment plan",
-      "Patient orientation",
-      "العلاج الطبيعي المنزلي",
-      "العلاج الطبيعي",
-      "مشرط",
-      "العلاج اليدوي",
-      "العلاج بالتمارين",
-      "خطة العلاج",
-      "توجيه المريض",
-      "حجامة",
-      "حجامه",
-      "حجامة علاجية",
-      "حجامة منزلية",
-      "الحجامة المنزلية",
-      "الحجامه المنزليه",
-      "حجامة في المنزل",
-      "حجامة السنة",
-      "حجامة لعرق النسا",
-      "علاج طبيعي منزلي",
-      "علاج طبيعي",
-      "علاج طبيعي للمسنين",
-      "علاج عرق النسا",
-      "علاج الكتف المتجمد",
-      "جلسات استشفاء عضلي",
-      "استشفاء عضلي",
-      "جلسة ريكافري",
-      "استشفاء العضلات",
-      "تنشيط الجسم",
-      "Home Cupping",
-      "Hijama",
-      "Therapeutic Hijama",
-      "Home Hijama",
-      "Home Cupping",
-      "Home Cupping",
-      "Hijama at Home",
-      "Sunna Hijama",
-      "Hijama for Sciatica",
-      "Home Physical Therapy",
-      "Physical Therapy",
-      "Physical Therapy for the Elderly",
-      "Sciatica Treatment",
-      "Frozen Shoulder Treatment",
-      "Muscle Recovery Sessions",
-      "Muscle Recovery",
-      "Recovery Session",
-      "Muscle Recovery",
-      "Body Activation",
-    ],
+    keywords: keywords?.seoKeyWords ?? [],
 
     openGraph: {
       url: url,

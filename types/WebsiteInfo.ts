@@ -17,6 +17,13 @@ const websiteInfoSchema = z.object({
   instagram: z.string().optional(),
   whatsapp: z.string().optional(),
   twitter: z.string().optional(),
+  seoKeyWords: z
+    .array(
+      z.object({
+        name: z.string().min(1, "Please enter the keyword"),
+      }),
+    )
+    .optional(),
 });
 
 export { websiteInfoSchema, reviewSchema };
