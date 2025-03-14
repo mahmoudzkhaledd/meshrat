@@ -20,11 +20,10 @@ export default async function BlogsPage({
   const page = toInt(searchParams.page) ?? 0;
   const lang = getLanguage();
 
-  
   const blogs = await prisma.blog.findMany({
     where: {
       published: true,
-      arabic: lang.lang == 'ar',
+      arabic: lang.lang == "ar",
     },
     take: 10,
     skip: page * 10,
@@ -35,14 +34,18 @@ export default async function BlogsPage({
   const count = await prisma.blog.count({
     where: {
       published: true,
-      arabic: lang.lang == 'ar',
+      arabic: lang.lang == "ar",
     },
   });
   const t = await getTranslations("blogsPage");
   return (
     <div className="w-full px-4">
       <Head>
-        <link rel="canonical" href={`${process.env.URL}/blogs` ?? ""} key="canonical" />
+        <link
+          rel="canonical"
+          href={`${process.env.URL}/blogs`}
+          key="canonical"
+        />
       </Head>
       {blogs.length == 0 ? (
         <div className="m-auto flex flex-col items-center justify-center px-4">
