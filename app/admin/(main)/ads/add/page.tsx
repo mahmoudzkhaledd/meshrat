@@ -50,7 +50,7 @@ export default function AdvertisementForm({ adv }: { adv?: Advertisement }) {
     backgroundImage: adv?.backgroundImage ?? undefined,
     buttonText: adv?.buttonText,
     buttonUrl: adv?.buttonUrl,
-    endDate: adv?.endDate,
+    endDate: adv?.endDate ?? null,
     startDate: adv?.startDate,
   };
 
