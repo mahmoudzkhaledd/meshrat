@@ -12,6 +12,7 @@ const ctx = createContext<WebsiteInfo>({
   instagram: null,
   whatsapp: null,
   twitter: null,
+  seoKeyWords: [],
 });
 
 export const useWebsiteInfo = () => {
