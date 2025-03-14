@@ -91,3 +91,17 @@ model FAQ {
   answer    String
   createdAt DateTime @default(now())
 }
+
+model Advertisement {
+  id              String    @id @default(cuid())
+  title           String
+  description     String
+  offerBadge      String
+  backgroundImage String?
+  buttonText      String
+  buttonUrl       String
+  arabic          Boolean   @default(false)
+  startDate       DateTime
+  endDate         DateTime?
+  createdAt       DateTime  @default(now())
+}

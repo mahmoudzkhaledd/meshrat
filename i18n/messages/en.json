@@ -7,6 +7,13 @@
     "blogs": "Articles"
   },
   "homePage": {
+    "dialog": {
+      "endsIn": "Offer Ends In:",
+      "days": "DAYS",
+      "hours": "HOURS",
+      "minutes": "MINUTES",
+      "seconds": "SEC"
+    },
     "hero": {
       "title": "Home Cupping Services Number 1 in Egypt",
       "subtitle": "We have been providing home cupping services across Egypt with the highest efficiency and the most affordable prices for over 3 years.",
@@ -38,9 +45,8 @@
         "Certified and trained medical personnel providing exceptional care to meet your unique needs.",
         "Mishrat stands out with high-quality and efficient services.",
         "We provide all possible means of comfort for our distinguished clients."
-    ],
+      ],
       "ul2Title": "Home Cupping Services",
-
       "ul2": [
         "Certified Professionals",
         "Safe and Hygienic Procedures",

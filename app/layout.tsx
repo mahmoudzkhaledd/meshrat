@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import {  Almarai,Montserrat } from "next/font/google";
+import { Almarai, Montserrat } from "next/font/google";
 import "../styles/globals.css";
 import AuthXProvider from "@/authX/Provider/AuthXProvider";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const url = new URL(process.env.URL ?? "http://localhost:3000");
   return {
     metadataBase: url,
-    viewport: "width=device-width, initial-scale=1",
+    // viewport: "width=device-width, initial-scale=1",
     keywords: [
       "Home physiotherapy",
       "Physiotherapy",
@@ -118,7 +118,6 @@ export default async function RootLayout({
   return (
     <html lang={lang} suppressHydrationWarning>
       <Head>
-        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

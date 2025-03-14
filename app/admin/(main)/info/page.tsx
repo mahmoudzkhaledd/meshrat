@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import {
+  CheckCircle,
   CircleHelp,
   FileQuestion,
   LucideIcon,
@@ -38,11 +39,8 @@ export default function MainInfoPage() {
           TopIcon={Phone}
         />
         <CustomCard link="/admin/reviews" text={"Reviews"} TopIcon={Star} />
-        <CustomCard
-          link="/admin/faq"
-          text={"FAQs"}
-          TopIcon={CircleHelp}
-        />
+        <CustomCard link="/admin/faq" text={"FAQs"} TopIcon={CircleHelp} />
+        <CustomCard link="/admin/ads" text={"ADs"} TopIcon={CheckCircle} />
       </div>
     </div>
   );

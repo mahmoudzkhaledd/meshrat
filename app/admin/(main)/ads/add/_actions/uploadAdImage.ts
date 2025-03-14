@@ -6,9 +6,9 @@ import { base64ToUint8Array, extractAxiosError, slugify } from "@/lib/utils";
 import { getDownloadURL, ref, uploadBytes } from "@firebase/storage";
 import { redirect } from "next/navigation";
 
-export const uploadServiceImage = async (
+export const uploadAdImage = async (
   image: string,
-  serviceId: string,
+  adId: string,
   imageName: string,
 ): Promise<{ error?: string; url?: string } | undefined> => {
   const session = await authXAdmin();
@@ -18,28 +18,28 @@ export const uploadServiceImage = async (
   }
   try {
     const urlfinal = await prisma.$transaction(async (prsma) => {
-      const service = await prsma.service.findUnique({
+      const tmpAd = await prsma.advertisement.findUnique({
         where: {
-          id: serviceId,
+          id: adId,
         },
       });
-      if (service == null) throw new Error("Service not found");
-      if (service.thumbnailImage != null)
+      if (tmpAd == null) throw new Error("Ad not found");
+      if (tmpAd.backgroundImage != null)
         throw new Error(
           "You must delete the current banner before upload new one",
         );
       const fileRef = ref(
         storage,
-        `services/${serviceId}/banner.${imageName.split(".")[imageName.split(".").length - 1]}`,
+        `ads/${adId}/banner.${imageName.split(".")[imageName.split(".").length - 1]}`,
       );
       const snap = await uploadBytes(fileRef, base64ToUint8Array(image));
       const url = await getDownloadURL(fileRef);
-      await prsma.service.update({
+      await prsma.advertisement.update({
         where: {
-          id: serviceId,
+          id: adId,
         },
         data: {
-          thumbnailImage: url,
+          backgroundImage: url,
         },
       });
       return url;

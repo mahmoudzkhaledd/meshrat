@@ -139,7 +139,7 @@ export function objectToQueryString(filter?: any) {
 export function getTextLanguage(str: string): "ar" | "en" {
   const lang = franc(str);
 
-  return (lang == "eng") ? "en" : "ar";
+  return lang == "eng" ? "en" : "ar";
 }
 export function extractAxiosError(ex: any): string | null {
   if (ex?.code == "P2002") {
@@ -180,4 +180,13 @@ export function slugify(text: string) {
     .toLowerCase()
     .replace(/ /g, "-")
     .replace(/[^\w\u0600-\u06FF-]+/g, "");
+}
+export function base64ToUint8Array(base64: string) {
+  var binaryString = atob(base64.split(",")[1]);
+  var len = binaryString.length;
+  var bytes = new Uint8Array(len);
+  for (var i = 0; i < len; i++) {
+    bytes[i] = binaryString.charCodeAt(i);
+  }
+  return bytes;
 }
