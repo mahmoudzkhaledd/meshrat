@@ -3,6 +3,7 @@ import {
   CheckCircle,
   CircleHelp,
   FileQuestion,
+  Info,
   LucideIcon,
   Phone,
   Star,
@@ -35,8 +36,8 @@ export default function MainInfoPage() {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <CustomCard
           link="/admin/contact-info"
-          text={"Contact Info"}
-          TopIcon={Phone}
+          text={"Website Info"}
+          TopIcon={Info}
         />
         <CustomCard link="/admin/reviews" text={"Reviews"} TopIcon={Star} />
         <CustomCard link="/admin/faq" text={"FAQs"} TopIcon={CircleHelp} />
