@@ -35,6 +35,7 @@ import toast from "react-hot-toast";
 import { Advertisement } from "@prisma/client";
 import { uploadAdImage } from "./_actions/uploadAdImage";
 import { deleteAdImage } from "./_actions/deleteAdImage";
+import { deleteAdAction } from "./_actions/deleteAdACtion";
 
 export default function AdvertisementForm({ adv }: { adv?: Advertisement }) {
   const [showPreview, setShowPreview] = useState(false);
@@ -86,7 +87,18 @@ export default function AdvertisementForm({ adv }: { adv?: Advertisement }) {
       form.setValue("backgroundImage", null);
     });
   };
+  const deleteAd = () => {
+    if (!adv || !window.confirm("Are you sure to delte this AD?")) return;
 
+    startTrans(async () => {
+      const res = await deleteAdAction(adv.id);
+      if (res?.error) {
+        toast.error(res.error);
+        return;
+      }
+      window.location.href = "/admin/ads";
+    });
+  };
   const handelChangeImage = (e: any) => {
     if (adv == null) return;
     if (e?.target?.files?.length == 0 || e?.target?.files?.length == null)
@@ -382,7 +394,7 @@ export default function AdvertisementForm({ adv }: { adv?: Advertisement }) {
             </div>
 
             <div className="flex gap-4">
-              <Button loading={loading} disabled={loading} type="submit">
+              <Button disabled={loading} type="submit">
                 {adv ? "Edit Advertsment" : "Add Advertsment"}
               </Button>
               <Button
@@ -391,7 +403,15 @@ export default function AdvertisementForm({ adv }: { adv?: Advertisement }) {
                 onClick={previewDialog}
                 variant="outline"
               >
-                Preview Dialog
+                Preview Ad
+              </Button>
+              <Button
+                disabled={loading}
+                type="button"
+                onClick={deleteAd}
+                variant="destructive"
+              >
+                Delete Ad
               </Button>
             </div>
           </form>
