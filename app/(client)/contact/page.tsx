@@ -14,7 +14,11 @@ export default async function ContactUsPage({}) {
   return (
     <section className="bg-white pb-20 dark:bg-gray-900">
       <Head>
-        <link rel="canonical" href={`${process.env.URL}/contact` ?? ""} key="canonical" />
+        <link
+          rel="canonical"
+          href={`${process.env.URL}/contact`}
+          key="canonical"
+        />
       </Head>
       <div>
         <p className="font-medium text-blue-500 dark:text-blue-400">
