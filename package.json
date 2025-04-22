@@ -9,7 +9,7 @@
     "lint": "next lint",
     "db": "bunx prisma db push && bun run dev",
     "studio": "bunx prisma studio --browser none",
-    "postinstall": "prisma generate"
+    "postinstall": "bunx prisma generate"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
