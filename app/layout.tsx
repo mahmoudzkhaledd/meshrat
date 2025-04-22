@@ -11,7 +11,8 @@ import { headers } from "next/headers";
 import { getMessages } from "next-intl/server";
 import { getLanguage } from "@/Controllers/language/languageUtils";
 import Head from "next/head";
-import {GoogleTagManager} from '@next/third-parties/google';
+import Script from 'next/script'
+
 
 const inter = Montserrat({ subsets: ["latin"] });
 const almarai = Almarai({
@@ -96,6 +97,18 @@ export default async function RootLayout({
         />
       </Head>
       <body className={lang == "ar" ? almarai.className : inter.className}>
+      <Script
+  src="https://www.googletagmanager.com/gtag/js?id=AW-16985116608"
+  strategy="afterInteractive"
+/>
+<Script id="google-analytics" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-16985116608');
+  `}
+</Script>
         <NextIntlClientProvider messages={messages}>
           <AuthXProvider session={null}>
             <TooltipProvider delayDuration={30}>
@@ -104,7 +117,7 @@ export default async function RootLayout({
             </TooltipProvider>
           </AuthXProvider>
         </NextIntlClientProvider>
-        <GoogleTagManager gtmId="AW-16985116608"/>
+   
       </body>
     </html>
   );
