@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db": "bunx prisma db push && npm run dev",
+    "db": "bunx prisma db push && bun run dev",
     "studio": "bunx prisma studio --browser none",
     "postinstall": "prisma generate"
   },
