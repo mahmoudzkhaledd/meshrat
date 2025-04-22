@@ -11,7 +11,7 @@ import { headers } from "next/headers";
 import { getMessages } from "next-intl/server";
 import { getLanguage } from "@/Controllers/language/languageUtils";
 import Head from "next/head";
-import Script from "next/script";
+import {GoogleTagManager} from '@next/third-parties/google';
 
 const inter = Montserrat({ subsets: ["latin"] });
 const almarai = Almarai({
@@ -104,6 +104,7 @@ export default async function RootLayout({
             </TooltipProvider>
           </AuthXProvider>
         </NextIntlClientProvider>
+        <GoogleTagManager gtmId="AW-16985116608"/>
       </body>
     </html>
   );
